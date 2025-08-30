@@ -276,5 +276,27 @@
       document.querySelectorAll('.btn-copy').forEach(b=>{ b.addEventListener('click', async ()=>{ try{ await navigator.clipboard.writeText(b.dataset.copy); const old=b.textContent; b.textContent='Copiado!'; setTimeout(()=>b.textContent=old,1200); }catch(e){ alert('Não foi possível copiar o link.'); } });});
     })();
   </script>
+  <!-- Cookie consent banner -->
+  <div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
+    <p>Este site utiliza cookies de afiliação para funcionar corretamente. 
+       Ao continuar assumes a aceitação. Consulta a nossa 
+       <a href="cookies.html">Política de Cookies</a>.
+    </p>
+    <button id="cookie-accept">Aceitar</button>
+  </div>
+
+  <script>
+    (function(){
+      const banner=document.getElementById('cookie-banner');
+      const btn=document.getElementById('cookie-accept');
+      if(!localStorage.getItem('cookies-accepted')){
+        banner.hidden=false;
+      }
+      btn.addEventListener('click',()=>{
+        localStorage.setItem('cookies-accepted','1');
+        banner.hidden=true;
+      });
+    })();
+  </script>
 </body>
 </html>
