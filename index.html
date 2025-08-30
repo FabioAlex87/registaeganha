@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Regista & Ganha – Links Promocionais</title>
+  <meta name="description" content="Seleção de plataformas que uso e recomendo. Alguns links são de afiliado (sem custo extra)." />
+  <style>
+    :root { --bg:#0b0d10; --card:#12161b; --muted:#9fb1c1; --accent:#2aa9ff; --radius:18px; --shadow:0 8px 24px rgba(0,0,0,.25) }
+    *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:#e6eef6;font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1000px;margin:0 auto;padding:20px}
+
+    /* Banner topo */
+    .banner{margin:4px 0 16px}
+    .banner img{width:100%;height:auto;display:block;border-radius:22px;box-shadow:var(--shadow)}
+    .banner .fallback{display:none;background:#0e1318;border:1px solid rgba(255,255,255,.08);padding:12px;border-radius:16px;color:var(--muted)}
+
+    header{display:flex;align-items:center;gap:16px;margin:8px 0 10px}
+    .logo{width:48px;height:48px;border-radius:12px;background:radial-gradient(120% 120% at 20% 20%, #2aa9ff, #1b2330);display:grid;place-items:center;box-shadow:var(--shadow)}
+    .logo span{font-weight:800}
+    .title h1{font-size:22px;margin:0 0 4px}
+    .title p{margin:0;color:var(--muted)}
+
+    .disclaimer{background:linear-gradient(135deg, rgba(42,169,255,.15), rgba(27,196,125,.15)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:10px 14px; margin:12px 0 }
+
+    /* Filtros */
+    .filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}
+    .chip{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);cursor:pointer;user-select:none}
+    .chip.active{background:var(--accent);color:#001725;border-color:transparent}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat( auto-fill, minmax(260px,1fr) );gap:16px}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .badge{position:absolute;top:10px;right:10px;padding:4px 8px;border-radius:999px;font-size:12px;border:1px solid rgba(255,255,255,.12);color:#d8e9f7}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:40px;height:40px;border-radius:10px;background:#0e1318;object-fit:cover}
+    .brand h3{margin:0;font-size:18px}
+    .tagline{color:var(--muted);margin:0}
+    .perks{display:flex;flex-wrap:wrap;gap:8px}
+    .perk{font-size:12px;padding:6px 8px;border-radius:10px;border:1px dashed rgba(255,255,255,.14);color:#c8d6e3}
+    .cta{display:flex;gap:8px;margin-top:auto}
+    .btn{flex:1;text-align:center;padding:12px;border-radius:12px;font-weight:700;border:1px solid transparent;cursor:pointer}
+    .btn.primary{background:linear-gradient(180deg, #2aa9ff, #1d7fca);color:#001725}
+    .btn.secondary{background:transparent;border-color:rgba(255,255,255,.16);color:#e6eef6}
+
+    /* Cores por categoria */
+    .card[data-cat]::before{content:"";position:absolute;inset:-1px;border-radius:var(--radius);background:radial-gradient(80% 50% at 120% -20%, color-mix(in oklab, var(--cat, #2aa9ff) 18%, transparent), transparent);pointer-events:none}
+    .card[data-cat] .btn.primary{background:linear-gradient(180deg, var(--cat, #2aa9ff), var(--cat2, #1d7fca));color:#001725}
+    .card[data-cat="Finanças"], .chip[data-cat="Finanças"].active { --cat:#2aa9ff; --cat2:#1bc47d; }
+    .card[data-cat="Segurança"], .chip[data-cat="Segurança"].active { --cat:#7c5cff; --cat2:#00e0ff; }
+    .card[data-cat="Cripto"], .chip[data-cat="Cripto"].active { --cat:#f2c94c; --cat2:#2d3436; }
+
+    footer{margin:28px 0 16px;color:var(--muted);font-size:14px}
+    footer a{text-decoration:underline;color:#cfe8ff}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="banner" aria-label="Imagem de destaque">
+      <img src="regista-ganha.png" alt="Regista & Ganha – Links promocionais" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
+      <div class="fallback">Carregue a imagem <strong>regista-ganha.png</strong> na mesma pasta do <code>index.html</code> para aparecer o banner.</div>
+    </div>
+
+    <header>
+      <div class="logo" aria-hidden="true"><span>R&G</span></div>
+      <div class="title">
+        <h1>Links de afiliado que realmente uso</h1>
+        <p>Sem custo extra para si. Transparência total.</p>
+      </div>
+    </header>
+
+    <div class="disclaimer"><strong>Transparência:</strong> alguns links são <u>de afiliado</u>. Posso receber uma comissão se comprar através deles, sem qualquer custo adicional.</div>
+
+    <nav class="filters" aria-label="Categorias">
+      <span class="chip active" data-cat="Todos">Todos</span>
+      <span class="chip" data-cat="Finanças">Finanças</span>
+      <span class="chip" data-cat="Segurança">Segurança</span>
+      <span class="chip" data-cat="Cripto">Cripto</span>
+    </nav>
+
+    <section class="grid" aria-label="Lista de plataformas">
+      <!-- PAYPAL -->
+      <article class="card" data-cat="Finanças">
+        <span class="badge">Pagamento</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/paypal.com" alt="Logótipo PayPal" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=PP'" />
+          <div>
+            <h3>PayPal</h3>
+            <p class="tagline">Plataforma de pagamentos online confiável e amplamente aceite.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Checkout seguro</span>
+          <span class="perk">App móvel</span>
+          <span class="perk">Proteção de comprador</span>
+        </div>
+        <div class="cta" data-name="PayPal">
+          <a class="btn primary" rel="nofollow sponsored" target="_blank" href="https://py.pl/1nPOTc">Abrir PayPal</a>
+          <button class="btn secondary btn-copy" data-copy="https://py.pl/1nPOTc">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- XTB -->
+      <article class="card" data-cat="Finanças">
+        <span class="badge">Corretora</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/xtb.com" alt="Logótipo XTB" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=XT'" />
+          <div>
+            <h3>XTB</h3>
+            <p class="tagline">Corretora para ações e ETFs; plataforma xStation.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Comissões competitivas</span>
+          <span class="perk">xStation</span>
+          <span class="perk">Educação gratuita</span>
+        </div>
+        <div class="cta" data-name="XTB">
+          <a class="btn primary" rel="nofollow" target="_blank" href="https://www.xtb.com/pt?utm_source=site&utm_medium=affiliate&utm_campaign=xtb">Abrir XTB</a>
+          <button class="btn secondary btn-copy" data-copy="https://www.xtb.com/pt?utm_source=site&utm_medium=affiliate&utm_campaign=xtb">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- TRADE REPUBLIC -->
+      <article class="card" data-cat="Finanças">
+        <span class="badge">Corretora</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/traderepublic.com" alt="Logótipo Trade Republic" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=TR'" />
+          <div>
+            <h3>Trade Republic</h3>
+            <p class="tagline">Broker com custos baixos e app intuitiva; ideal para ações e ETFs.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Ações & ETFs</span>
+          <span class="perk">Planos de poupança</span>
+          <span class="perk">App intuitiva</span>
+        </div>
+        <div class="cta" data-name="Trade Republic">
+          <a class="btn primary" rel="nofollow sponsored" target="_blank" href="https://refnocode.trade.re/3qb3vqf1">Abrir Trade Republic</a>
+          <button class="btn secondary btn-copy" data-copy="https://refnocode.trade.re/3qb3vqf1">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- PROTON VPN -->
+      <article class="card" data-cat="Segurança">
+        <span class="badge">VPN</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/protonvpn.com" alt="Logótipo Proton VPN" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=PV'" />
+          <div>
+            <h3>Proton VPN</h3>
+            <p class="tagline">VPN com foco em privacidade e sem registo de atividades.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Sem logs</span>
+          <span class="perk">Multi‑plataforma</span>
+          <span class="perk">Plano gratuito</span>
+        </div>
+        <div class="cta" data-name="Proton VPN">
+          <a class="btn primary" rel="nofollow sponsored" target="_blank" href="https://pr.tn/ref/YT17BY4CTXT0">Abrir Proton VPN</a>
+          <button class="btn secondary btn-copy" data-copy="https://pr.tn/ref/YT17BY4CTXT0">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- MALWAREBYTES -->
+      <article class="card" data-cat="Segurança">
+        <span class="badge">Antimalware</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/malwarebytes.com" alt="Logótipo Malwarebytes" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=MB'" />
+          <div>
+            <h3>Malwarebytes</h3>
+            <p class="tagline">Proteção adicional contra malware e ransomware para PC.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Leve</span>
+          <span class="perk">Tempo real</span>
+          <span class="perk">Windows</span>
+        </div>
+        <div class="cta" data-name="Malwarebytes">
+          <a class="btn primary" rel="nofollow sponsored" target="_blank" href="https://www.malwarebytes.com?utm_source=site&utm_medium=affiliate&utm_campaign=malwarebytes">Abrir Malwarebytes</a>
+          <button class="btn secondary btn-copy" data-copy="https://www.malwarebytes.com?utm_source=site&utm_medium=affiliate&utm_campaign=malwarebytes">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- BINANCE -->
+      <article class="card" data-cat="Cripto">
+        <span class="badge">Cripto</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/binance.com" alt="Logótipo Binance" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=BN'" />
+          <div>
+            <h3>Binance</h3>
+            <p class="tagline">Exchange de criptomoedas com elevada liquidez e comissões competitivas.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Spot & Futures</span>
+          <span class="perk">Taxas baixas</span>
+          <span class="perk">App iOS/Android</span>
+        </div>
+        <div class="cta" data-name="Binance">
+          <a class="btn primary" rel="nofollow sponsored" target="_blank" href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_009B1AJY9L">Abrir Binance</a>
+          <button class="btn secondary btn-copy" data-copy="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_009B1AJY9L">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- BONDORA -->
+      <article class="card" data-cat="Finanças">
+        <span class="badge">Investimento</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/bondora.com" alt="Logótipo Bondora" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=BD'" />
+          <div>
+            <h3>Bondora</h3>
+            <p class="tagline">Plataforma europeia de investimento automatizado.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Automatizado</span>
+          <span class="perk">Baixo mínimo</span>
+          <span class="perk">App móvel</span>
+        </div>
+        <div class="cta" data-name="Bondora">
+          <a class="btn primary" rel="nofollow sponsored" target="_blank" href="https://bondora.com/ref/fabios7">Abrir Bondora</a>
+          <button class="btn secondary btn-copy" data-copy="https://bondora.com/ref/fabios7">Copiar link</button>
+        </div>
+      </article>
+    </section>
+
+    <footer id="politica">
+      <p><strong>Nota legal:</strong> utilize sempre <code>rel="nofollow sponsored"</code> nos links de afiliado. Mantenha Política de Privacidade e de Cookies atualizadas.</p>
+      <p>© <span id="ano"></span> – Recomendações pessoais. Logótipos pertencem aos respetivos proprietários.</p>
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      // Atualiza ano
+      const y=document.getElementById('ano'); if(y) y.textContent=new Date().getFullYear();
+      // Filtros por categoria
+      const chips=[...document.querySelectorAll('.chip')];
+      const cards=[...document.querySelectorAll('.grid .card')];
+      function applyFilter(cat){ cards.forEach(card=>{ card.style.display=(cat==='Todos'||card.dataset.cat===cat)?'flex':'none'; }); }
+      chips.forEach(ch=>ch.addEventListener('click',()=>{ chips.forEach(x=>x.classList.remove('active')); ch.classList.add('active'); applyFilter(ch.dataset.cat||ch.textContent.trim()); }));
+      applyFilter('Todos');
+      // Copiar link
+      document.querySelectorAll('.btn-copy').forEach(b=>{ b.addEventListener('click', async ()=>{ try{ await navigator.clipboard.writeText(b.dataset.copy); const old=b.textContent; b.textContent='Copiado!'; setTimeout(()=>b.textContent=old,1200); }catch(e){ alert('Não foi possível copiar o link.'); } });});
+    })();
+  </script>
+</body>
+</html>
