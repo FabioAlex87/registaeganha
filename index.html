@@ -57,6 +57,37 @@
 
     footer{margin:28px 0 16px;color:var(--muted);font-size:14px}
     footer a{text-decoration:underline;color:#cfe8ff}
+    /* Cookie banner */
+#cookie-banner {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 600px;
+  width: 90%;
+  background: #1e293b;
+  color: #f8fafc;
+  padding: 14px 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.5);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 9999;
+}
+#cookie-banner p { margin: 0; font-size: 14px; line-height: 1.4 }
+#cookie-banner button {
+  align-self: flex-end;
+  background: #0ea5e9;
+  color: #00111a;
+  font-weight: 700;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#cookie-banner button:hover { filter: brightness(1.1) }
+
   </style>
 </head>
 <body>
