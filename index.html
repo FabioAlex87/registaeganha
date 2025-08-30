@@ -9,7 +9,7 @@
     :root { --bg:#0b0d10; --card:#12161b; --muted:#9fb1c1; --accent:#2aa9ff; --radius:18px; --shadow:0 8px 24px rgba(0,0,0,.25) }
     *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:#e6eef6;font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif}
     a{color:inherit;text-decoration:none}
-    .wrap{max-width:1000px;margin:0 auto;padding:20px}
+    .wrap{max-width:1080px;margin:0 auto;padding:20px}
 
     /* Banner topo */
     .banner{margin:4px 0 16px}
@@ -50,6 +50,10 @@
     .card[data-cat="Finanças"], .chip[data-cat="Finanças"].active { --cat:#2aa9ff; --cat2:#1bc47d; }
     .card[data-cat="Segurança"], .chip[data-cat="Segurança"].active { --cat:#7c5cff; --cat2:#00e0ff; }
     .card[data-cat="Cripto"], .chip[data-cat="Cripto"].active { --cat:#f2c94c; --cat2:#2d3436; }
+    .card[data-cat="E-commerce"], .chip[data-cat="E-commerce"].active { --cat:#ffd166; --cat2:#ef476f; }
+    .card[data-cat="Gift Cards"], .chip[data-cat="Gift Cards"].active { --cat:#ffa600; --cat2:#ff7c43; }
+
+    .alert{font-size:12px;color:#facc15;margin-top:-6px}
 
     footer{margin:28px 0 16px;color:var(--muted);font-size:14px}
     footer a{text-decoration:underline;color:#cfe8ff}
@@ -77,6 +81,8 @@
       <span class="chip" data-cat="Finanças">Finanças</span>
       <span class="chip" data-cat="Segurança">Segurança</span>
       <span class="chip" data-cat="Cripto">Cripto</span>
+      <span class="chip" data-cat="E-commerce">E‑commerce</span>
+      <span class="chip" data-cat="Gift Cards">Gift Cards</span>
     </nav>
 
     <section class="grid" aria-label="Lista de plataformas">
@@ -87,38 +93,17 @@
           <img src="https://logo.clearbit.com/paypal.com" alt="Logótipo PayPal" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=PP'" />
           <div>
             <h3>PayPal</h3>
-            <p class="tagline">Plataforma de pagamentos online confiável e amplamente aceite.</p>
+            <p class="tagline">Pagamentos online confiáveis e amplamente aceites.</p>
           </div>
         </div>
         <div class="perks">
           <span class="perk">Checkout seguro</span>
-          <span class="perk">App móvel</span>
           <span class="perk">Proteção de comprador</span>
+          <span class="perk">App móvel</span>
         </div>
         <div class="cta" data-name="PayPal">
-          <a class="btn primary" rel="nofollow sponsored" target="_blank" href="https://py.pl/1nPOTc">Abrir PayPal</a>
-          <button class="btn secondary btn-copy" data-copy="https://py.pl/1nPOTc">Copiar link</button>
-        </div>
-      </article>
-
-      <!-- XTB -->
-      <article class="card" data-cat="Finanças">
-        <span class="badge">Corretora</span>
-        <div class="brand">
-          <img src="https://logo.clearbit.com/xtb.com" alt="Logótipo XTB" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=XT'" />
-          <div>
-            <h3>XTB</h3>
-            <p class="tagline">Corretora para ações e ETFs; plataforma xStation.</p>
-          </div>
-        </div>
-        <div class="perks">
-          <span class="perk">Comissões competitivas</span>
-          <span class="perk">xStation</span>
-          <span class="perk">Educação gratuita</span>
-        </div>
-        <div class="cta" data-name="XTB">
-          <a class="btn primary" rel="nofollow" target="_blank" href="https://www.xtb.com/pt?utm_source=site&utm_medium=affiliate&utm_campaign=xtb">Abrir XTB</a>
-          <button class="btn secondary btn-copy" data-copy="https://www.xtb.com/pt?utm_source=site&utm_medium=affiliate&utm_campaign=xtb">Copiar link</button>
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://py.pl/1nPOTc?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=paypal">Abrir PayPal</a>
+          <button class="btn secondary btn-copy" data-copy="https://py.pl/1nPOTc?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=paypal">Copiar link</button>
         </div>
       </article>
 
@@ -129,7 +114,7 @@
           <img src="https://logo.clearbit.com/traderepublic.com" alt="Logótipo Trade Republic" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=TR'" />
           <div>
             <h3>Trade Republic</h3>
-            <p class="tagline">Broker com custos baixos e app intuitiva; ideal para ações e ETFs.</p>
+            <p class="tagline">Broker com custos baixos; ideal para ações e ETFs.</p>
           </div>
         </div>
         <div class="perks">
@@ -138,71 +123,8 @@
           <span class="perk">App intuitiva</span>
         </div>
         <div class="cta" data-name="Trade Republic">
-          <a class="btn primary" rel="nofollow sponsored" target="_blank" href="https://refnocode.trade.re/3qb3vqf1">Abrir Trade Republic</a>
-          <button class="btn secondary btn-copy" data-copy="https://refnocode.trade.re/3qb3vqf1">Copiar link</button>
-        </div>
-      </article>
-
-      <!-- PROTON VPN -->
-      <article class="card" data-cat="Segurança">
-        <span class="badge">VPN</span>
-        <div class="brand">
-          <img src="https://logo.clearbit.com/protonvpn.com" alt="Logótipo Proton VPN" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=PV'" />
-          <div>
-            <h3>Proton VPN</h3>
-            <p class="tagline">VPN com foco em privacidade e sem registo de atividades.</p>
-          </div>
-        </div>
-        <div class="perks">
-          <span class="perk">Sem logs</span>
-          <span class="perk">Multi‑plataforma</span>
-          <span class="perk">Plano gratuito</span>
-        </div>
-        <div class="cta" data-name="Proton VPN">
-          <a class="btn primary" rel="nofollow sponsored" target="_blank" href="https://pr.tn/ref/YT17BY4CTXT0">Abrir Proton VPN</a>
-          <button class="btn secondary btn-copy" data-copy="https://pr.tn/ref/YT17BY4CTXT0">Copiar link</button>
-        </div>
-      </article>
-
-      <!-- MALWAREBYTES -->
-      <article class="card" data-cat="Segurança">
-        <span class="badge">Antimalware</span>
-        <div class="brand">
-          <img src="https://logo.clearbit.com/malwarebytes.com" alt="Logótipo Malwarebytes" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=MB'" />
-          <div>
-            <h3>Malwarebytes</h3>
-            <p class="tagline">Proteção adicional contra malware e ransomware para PC.</p>
-          </div>
-        </div>
-        <div class="perks">
-          <span class="perk">Leve</span>
-          <span class="perk">Tempo real</span>
-          <span class="perk">Windows</span>
-        </div>
-        <div class="cta" data-name="Malwarebytes">
-          <a class="btn primary" rel="nofollow sponsored" target="_blank" href="https://www.malwarebytes.com?utm_source=site&utm_medium=affiliate&utm_campaign=malwarebytes">Abrir Malwarebytes</a>
-          <button class="btn secondary btn-copy" data-copy="https://www.malwarebytes.com?utm_source=site&utm_medium=affiliate&utm_campaign=malwarebytes">Copiar link</button>
-        </div>
-      </article>
-
-      <!-- BINANCE -->
-      <article class="card" data-cat="Cripto">
-        <span class="badge">Cripto</span>
-        <div class="brand">
-          <img src="https://logo.clearbit.com/binance.com" alt="Logótipo Binance" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=BN'" />
-          <div>
-            <h3>Binance</h3>
-            <p class="tagline">Exchange de criptomoedas com elevada liquidez e comissões competitivas.</p>
-          </div>
-        </div>
-        <div class="perks">
-          <span class="perk">Spot & Futures</span>
-          <span class="perk">Taxas baixas</span>
-          <span class="perk">App iOS/Android</span>
-        </div>
-        <div class="cta" data-name="Binance">
-          <a class="btn primary" rel="nofollow sponsored" target="_blank" href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_009B1AJY9L">Abrir Binance</a>
-          <button class="btn secondary btn-copy" data-copy="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_009B1AJY9L">Copiar link</button>
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://refnocode.trade.re/3qb3vqf1?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=traderepublic">Abrir Trade Republic</a>
+          <button class="btn secondary btn-copy" data-copy="https://refnocode.trade.re/3qb3vqf1?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=traderepublic">Copiar link</button>
         </div>
       </article>
 
@@ -213,7 +135,7 @@
           <img src="https://logo.clearbit.com/bondora.com" alt="Logótipo Bondora" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=BD'" />
           <div>
             <h3>Bondora</h3>
-            <p class="tagline">Plataforma europeia de investimento automatizado.</p>
+            <p class="tagline">Investimento automatizado a partir de 1 €.</p>
           </div>
         </div>
         <div class="perks">
@@ -222,15 +144,121 @@
           <span class="perk">App móvel</span>
         </div>
         <div class="cta" data-name="Bondora">
-          <a class="btn primary" rel="nofollow sponsored" target="_blank" href="https://bondora.com/ref/fabios7">Abrir Bondora</a>
-          <button class="btn secondary btn-copy" data-copy="https://bondora.com/ref/fabios7">Copiar link</button>
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://bondora.com/ref/fabios7?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=bondora">Abrir Bondora</a>
+          <button class="btn secondary btn-copy" data-copy="https://bondora.com/ref/fabios7?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=bondora">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- REVOLUT -->
+      <article class="card" data-cat="Finanças">
+        <span class="badge">Promo</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/revolut.com" alt="Logótipo Revolut" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=RV'" />
+          <div>
+            <h3>Revolut</h3>
+            <p class="tagline">Conta digital com cartão físico e virtual; transferências rápidas.</p>
+          </div>
+        </div>
+        <p class="alert">⚠️ Oferta ativa até 9 de setembro</p>
+        <div class="perks">
+          <span class="perk">Cartão físico & virtual</span>
+          <span class="perk">Câmbio competitivo</span>
+          <span class="perk">App completa</span>
+        </div>
+        <div class="cta" data-name="Revolut">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://revolut.com/referral/?referral-code=fabiotim!AUG2-25-AR-L2&geo-redirect&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=revolut">Abrir Revolut</a>
+          <button class="btn secondary btn-copy" data-copy="https://revolut.com/referral/?referral-code=fabiotim!AUG2-25-AR-L2&geo-redirect&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=revolut">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- BINANCE -->
+      <article class="card" data-cat="Cripto">
+        <span class="badge">Cripto</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/binance.com" alt="Logótipo Binance" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=BN'" />
+          <div>
+            <h3>Binance</h3>
+            <p class="tagline">Exchange com elevada liquidez e comissões competitivas.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Spot & Futures</span>
+          <span class="perk">Taxas baixas</span>
+          <span class="perk">App iOS/Android</span>
+        </div>
+        <div class="cta" data-name="Binance">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_009B1AJY9L&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=binance">Abrir Binance</a>
+          <button class="btn secondary btn-copy" data-copy="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_009B1AJY9L&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=binance">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- PROTON (MAIL/VPN) -->
+      <article class="card" data-cat="Segurança">
+        <span class="badge">Privacidade</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/proton.me" alt="Logótipo Proton" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=PT'" />
+          <div>
+            <h3>Proton</h3>
+            <p class="tagline">Email/VPN focados em privacidade; encriptação ponta‑a‑ponta.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Sem logs</span>
+          <span class="perk">Criptografia forte</span>
+          <span class="perk">Ecosistema Proton</span>
+        </div>
+        <div class="cta" data-name="Proton">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://pr.tn/ref/YT17BY4CTXT0?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=proton">Abrir Proton</a>
+          <button class="btn secondary btn-copy" data-copy="https://pr.tn/ref/YT17BY4CTXT0?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=proton">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- BITREFILL -->
+      <article class="card" data-cat="Gift Cards">
+        <span class="badge">Gift Cards</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/bitrefill.com" alt="Logótipo Bitrefill" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=BR'" />
+          <div>
+            <h3>Bitrefill</h3>
+            <p class="tagline">Cartões‑presente e recargas pagas com cripto.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Global</span>
+          <span class="perk">Entrega imediata</span>
+          <span class="perk">BTC/USDT/mais</span>
+        </div>
+        <div class="cta" data-name="Bitrefill">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://bitrefill.com/invite/nfew0p5j?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=bitrefill">Usar Bitrefill</a>
+          <button class="btn secondary btn-copy" data-copy="https://bitrefill.com/invite/nfew0p5j?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=bitrefill">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- AMAZON PRIME -->
+      <article class="card" data-cat="E-commerce">
+        <span class="badge">E‑commerce</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/amazon.es" alt="Logótipo Amazon" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=AZ'" />
+          <div>
+            <h3>Amazon Prime</h3>
+            <p class="tagline">Teste gratuito, entregas rápidas e Prime Video.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Teste gratuito</span>
+          <span class="perk">Entregas rápidas</span>
+          <span class="perk">Prime Video</span>
+        </div>
+        <div class="cta" data-name="Amazon Prime">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://www.amazon.es/pruebaprime?tag=registaeganha-21&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=amazon-prime">Ativar Prime</a>
+          <button class="btn secondary btn-copy" data-copy="https://www.amazon.es/pruebaprime?tag=registaeganha-21&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=amazon-prime">Copiar link</button>
         </div>
       </article>
     </section>
 
     <footer id="politica">
-      <p><strong>Nota legal:</strong> utilize sempre <code>rel="nofollow sponsored"</code> nos links de afiliado. Mantenha Política de Privacidade e de Cookies atualizadas.</p>
-      <p>© <span id="ano"></span> – Recomendações pessoais. Logótipos pertencem aos respetivos proprietários.</p>
+      <p><strong>Nota legal:</strong> utilize sempre <code>rel="nofollow sponsored noopener"</code> nos links de afiliado. Mantenha Política de Privacidade e de Cookies atualizadas.</p>
+      <p>© <span id="ano"></span> – Recomendações pessoais. Logótipos pertencem aos respetivos proprietários. <a href="privacidade.html" rel="nofollow">Privacidade</a> · <a href="cookies.html" rel="nofollow">Cookies</a></p>
     </footer>
   </div>
 
