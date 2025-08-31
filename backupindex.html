@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Regista & Ganha – Links Promocionais</title>
+  <meta name="description" content="Seleção de plataformas que uso e recomendo. Alguns links são de afiliado (sem custo extra)." />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <style>
+    :root { --bg:#0b0d10; --card:#12161b; --muted:#9fb1c1; --accent:#2aa9ff; --radius:18px; --shadow:0 8px 24px rgba(0,0,0,.25) }
+    *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:#e6eef6;font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif}
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1080px;margin:0 auto;padding:20px}
+
+    /* Banner topo */
+    .banner{margin:4px 0 16px}
+    .banner img{width:100%;height:auto;display:block;border-radius:22px;box-shadow:var(--shadow)}
+    .banner .fallback{display:none;background:#0e1318;border:1px solid rgba(255,255,255,.08);padding:12px;border-radius:16px;color:var(--muted)}
+
+    header{display:flex;align-items:center;gap:16px;margin:8px 0 10px}
+    .logo{width:48px;height:48px;border-radius:12px;background:radial-gradient(120% 120% at 20% 20%, #2aa9ff, #1b2330);display:grid;place-items:center;box-shadow:var(--shadow)}
+    .logo span{font-weight:800}
+    .title h1{font-size:22px;margin:0 0 4px}
+    .title p{margin:0;color:var(--muted)}
+
+    .disclaimer{background:linear-gradient(135deg, rgba(42,169,255,.15), rgba(27,196,125,.15)); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:10px 14px; margin:12px 0 }
+
+    /* Filtros */
+    .filters{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 18px}
+    .chip{padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);cursor:pointer;user-select:none}
+    .chip.active{background:var(--accent);color:#001725;border-color:transparent}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat( auto-fill, minmax(260px,1fr) );gap:16px}
+    .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+    .badge{position:absolute;top:10px;right:10px;padding:4px 8px;border-radius:999px;font-size:12px;border:1px solid rgba(255,255,255,.12);color:#d8e9f7}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand img{width:40px;height:40px;border-radius:10px;background:#0e1318;object-fit:cover}
+    .brand h3{margin:0;font-size:18px}
+    .tagline{color:var(--muted);margin:0}
+    .perks{display:flex;flex-wrap:wrap;gap:8px}
+    .perk{font-size:12px;padding:6px 8px;border-radius:10px;border:1px dashed rgba(255,255,255,.14);color:#c8d6e3}
+    .cta{display:flex;gap:8px;margin-top:auto}
+    .btn{flex:1;text-align:center;padding:12px;border-radius:12px;font-weight:700;border:1px solid transparent;cursor:pointer}
+    .btn.primary{background:linear-gradient(180deg, #2aa9ff, #1d7fca);color:#001725}
+    .btn.secondary{background:transparent;border-color:rgba(255,255,255,.16);color:#e6eef6}
+
+    /* Cores por categoria */
+    .card[data-cat]::before{content:"";position:absolute;inset:-1px;border-radius:var(--radius);background:radial-gradient(80% 50% at 120% -20%, color-mix(in oklab, var(--cat, #2aa9ff) 18%, transparent), transparent);pointer-events:none}
+    .card[data-cat] .btn.primary{background:linear-gradient(180deg, var(--cat, #2aa9ff), var(--cat2, #1d7fca));color:#001725}
+    .card[data-cat="Finanças"],   .chip[data-cat="Finanças"].active   { --cat:#2aa9ff; --cat2:#1bc47d; }
+    .card[data-cat="Segurança"],  .chip[data-cat="Segurança"].active  { --cat:#7c5cff; --cat2:#00e0ff; }
+    .card[data-cat="Cripto"],     .chip[data-cat="Cripto"].active     { --cat:#f2c94c; --cat2:#2d3436; }
+    .card[data-cat="E-commerce"], .chip[data-cat="E-commerce"].active { --cat:#ffd166; --cat2:#ef476f; }
+    .card[data-cat="Gift Cards"], .chip[data-cat="Gift Cards"].active { --cat:#ffa600; --cat2:#ff7c43; }
+
+    .alert{font-size:12px;color:#facc15;margin-top:-6px}
+
+    footer{margin:28px 0 16px;color:var(--muted);font-size:14px}
+    footer a{text-decoration:underline;color:#cfe8ff}
+
+    /* Cookie banner */
+    #cookie-banner {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 600px;
+      width: 90%;
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 14px 16px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.5);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 9999;
+    }
+    #cookie-banner p { margin: 0; font-size: 14px; line-height: 1.4 }
+    #cookie-banner button {
+      align-self: flex-end;
+      background: #0ea5e9;
+      color: #00111a;
+      font-weight: 700;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    #cookie-banner button:hover { filter: brightness(1.1) }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="banner" aria-label="Imagem de destaque">
+      <img src="regista-ganha.png" alt="Regista & Ganha – Links promocionais" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'" />
+      <div class="fallback">Carregue a imagem <strong>regista-ganha.png</strong> na mesma pasta do <code>index.html</code> para aparecer o banner.</div>
+    </div>
+
+    <header>
+      <div class="logo" aria-hidden="true"><span>R&G</span></div>
+      <div class="title">
+        <h1>Links de afiliado que realmente uso e recomendo!</h1>
+        <p>Sem custo extra para ti. Transparência total.</p>
+      </div>
+    </header>
+
+    <div class="disclaimer"><strong>Transparência:</strong> alguns links são <u>de afiliado</u>. Posso receber uma comissão se comprar através deles, sem qualquer custo adicional.</div>
+
+    <nav class="filters" aria-label="Categorias">
+      <span class="chip active" data-cat="Todos">Todos</span>
+      <span class="chip" data-cat="Finanças">Finanças</span>
+      <span class="chip" data-cat="Segurança">Segurança</span>
+      <span class="chip" data-cat="Cripto">Cripto</span>
+      <span class="chip" data-cat="E-commerce">E-commerce</span>
+      <span class="chip" data-cat="Gift Cards">Gift Cards</span>
+    </nav>
+
+    <section class="grid" aria-label="Lista de plataformas">
+      <!-- PAYPAL -->
+      <article class="card" data-cat="Finanças">
+        <span class="badge">Pagamento</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/paypal.com" alt="Logótipo PayPal" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=PP'" />
+          <div>
+            <h3>PayPal</h3>
+            <p class="tagline">Pagamentos online confiáveis e amplamente aceites.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Checkout seguro</span>
+          <span class="perk">Proteção de comprador</span>
+          <span class="perk">App móvel</span>
+        </div>
+        <div class="cta" data-name="PayPal">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://py.pl/1nPOTc?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=paypal">Abrir PayPal</a>
+          <button class="btn secondary btn-copy" data-copy="https://py.pl/1nPOTc?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=paypal">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- TRADE REPUBLIC -->
+      <article class="card" data-cat="Finanças">
+        <span class="badge">Corretora</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/traderepublic.com" alt="Logótipo Trade Republic" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=TR'" />
+          <div>
+            <h3>Trade Republic</h3>
+            <p class="tagline">Broker com custos baixos; ideal para ações e ETFs.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Ações & ETFs</span>
+          <span class="perk">Planos de poupança</span>
+          <span class="perk">App intuitiva</span>
+        </div>
+        <div class="cta" data-name="Trade Republic">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://refnocode.trade.re/3qb3vqf1?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=traderepublic">Abrir Trade Republic</a>
+          <button class="btn secondary btn-copy" data-copy="https://refnocode.trade.re/3qb3vqf1?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=traderepublic">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- BONDORA -->
+      <article class="card" data-cat="Finanças">
+        <span class="badge">Investimento</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/bondora.com" alt="Logótipo Bondora" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=BD'" />
+          <div>
+            <h3>Bondora</h3>
+            <p class="tagline">Investimento automatizado a partir de 1 €.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Automatizado</span>
+          <span class="perk">Baixo mínimo</span>
+          <span class="perk">App móvel</span>
+        </div>
+        <div class="cta" data-name="Bondora">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://bondora.com/ref/fabios7?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=bondora">Abrir Bondora</a>
+          <button class="btn secondary btn-copy" data-copy="https://bondora.com/ref/fabios7?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=bondora">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- REVOLUT -->
+      <article class="card" data-cat="Finanças">
+        <span class="badge">Promo</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/revolut.com" alt="Logótipo Revolut" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=RV'" />
+          <div>
+            <h3>Revolut</h3>
+            <p class="tagline">Conta digital com cartão físico e virtual; transferências rápidas.</p>
+          </div>
+        </div>
+        <p class="alert">⚠️ Oferta ativa até 9 de setembro</p>
+        <div class="perks">
+          <span class="perk">Cartão físico & virtual</span>
+          <span class="perk">Câmbio competitivo</span>
+          <span class="perk">App completa</span>
+        </div>
+        <div class="cta" data-name="Revolut">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://revolut.com/referral/?referral-code=fabiotim!AUG2-25-AR-L2&geo-redirect&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=revolut">Abrir Revolut</a>
+          <button class="btn secondary btn-copy" data-copy="https://revolut.com/referral/?referral-code=fabiotim!AUG2-25-AR-L2&geo-redirect&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=revolut">Copiar link</button>
+        </div>
+      </article>
+<!-- WISE -->
+<article class="card" data-cat="Finanças">
+  <span class="badge">Transferências</span>
+  <div class="brand">
+    <img src="https://logo.clearbit.com/wise.com" alt="Logótipo Wise"
+         onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=W'" />
+    <div>
+      <h3>Wise</h3>
+      <p class="tagline">Conta multi-moeda e transferências internacionais baratas.</p>
+    </div>
+  </div>
+  <div class="perks">
+    <span class="perk">Transferências rápidas</span>
+    <span class="perk">Câmbio real</span>
+    <span class="perk">Conta multi-moeda</span>
+  </div>
+  <div class="cta" data-name="Wise">
+    <a class="btn primary" rel="nofollow sponsored noopener" target="_blank"
+       href="https://wise.com/invite/arhc/fabios1341?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=wise">
+       Abrir Wise</a>
+    <button class="btn secondary btn-copy"
+            data-copy="https://wise.com/invite/arhc/fabios1341?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=wise">
+            Copiar link</button>
+  </div>
+</article>
+<!-- MOEY -->
+<article class="card" data-cat="Finanças">
+  <span class="badge">Conta Digital</span>
+  <div class="brand">
+    <img src="https://logo.clearbit.com/moey.pt" alt="Logótipo Moey"
+         onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=MY'" />
+    <div>
+      <h3>Moey</h3>
+      <p class="tagline">Conta digital portuguesa, grátis e 100% mobile.</p>
+    </div>
+  </div>
+  <div class="perks">
+    <span class="perk">Cartão físico & virtual</span>
+    <span class="perk">Pagamentos MB WAY</span>
+    <span class="perk">Sem comissões</span>
+  </div>
+  <div class="cta" data-name="Moey">
+    <a class="btn primary" rel="nofollow sponsored noopener" target="_blank"
+       href="https://moey.pt/campaigns/moeyapp2020?token=moey8831!7&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=moey">
+       Abrir conta Moey</a>
+    <button class="btn secondary btn-copy"
+            data-copy="https://moey.pt/campaigns/moeyapp2020?token=moey8831!7&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=moey">
+            Copiar link</button>
+  </div>
+</article>
+<!-- SPLIIIT -->
+<article class="card" data-cat="Finanças">
+  <span class="badge">Gestão</span>
+  <div class="brand">
+    <img src="spliiit.png" alt="Logótipo Spliiit"
+         onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=SP'" />
+    <div>
+      <h3>Spliiit</h3>
+      <p class="tagline">Partilha de despesas simples entre amigos e família.</p>
+    </div>
+  </div>
+  <div class="perks">
+    <span class="perk">Gestão de grupos</span>
+    <span class="perk">Divisão automática</span>
+    <span class="perk">App prática</span>
+  </div>
+  <div class="cta" data-name="Spliit">
+    <a class="btn primary" rel="nofollow sponsored noopener" target="_blank"
+       href="https://splii.it/1841868381?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=spliit">
+       Abrir Spliit</a>
+    <button class="btn secondary btn-copy"
+            data-copy="https://splii.it/1841868381?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=spliit">
+            Copiar link</button>
+  </div>
+</article>
+      <!-- BINANCE -->
+      <article class="card" data-cat="Cripto">
+        <span class="badge">Cripto</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/binance.com" alt="Logótipo Binance" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=BN'" />
+          <div>
+            <h3>Binance</h3>
+            <p class="tagline">Exchange com elevada liquidez e comissões competitivas.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Spot & Futures</span>
+          <span class="perk">Taxas baixas</span>
+          <span class="perk">App iOS/Android</span>
+        </div>
+        <div class="cta" data-name="Binance">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_009B1AJY9L&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=binance">Abrir Binance</a>
+          <button class="btn secondary btn-copy" data-copy="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_009B1AJY9L&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=binance">Copiar link</button>
+        </div>
+      </article>
+<!-- BINANCE -->
+<article class="card" data-cat="Cripto">
+  <span class="badge">Cripto</span>
+  <div class="brand">
+    <img src="https://logo.clearbit.com/binance.com" alt="Logótipo Binance"
+         onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=BN'" />
+    <div>
+      <h3>Binance</h3>
+      <p class="tagline">Exchange líder com elevada liquidez e comissões competitivas.</p>
+    </div>
+  </div>
+  <p class="alert">⚠️ Oferta de tokens! Promo válida até <strong>9 de setembro</strong>).</p>
+  <div class="perks">
+    <span class="perk">Spot & Futures</span>
+    <span class="perk">Taxas baixas</span>
+    <span class="perk">App iOS/Android</span>
+    <span class="perk">Oferta de tokens</span>
+  </div>
+  <div class="cta" data-name="Binance">
+    <a class="btn primary" rel="nofollow sponsored noopener" target="_blank"
+       href="https://www.binance.com/referral/earn-together/refer-in-hotsummer/claim?hl=en&ref=GRO_20338_RQP48&utm_source=default&utm_medium=card&utm_campaign=home&utm_content=binance">
+       Abrir Binance</a>
+    <button class="btn secondary btn-copy"
+            data-copy="https://www.binance.com/referral/earn-together/refer-in-hotsummer/claim?hl=en&ref=GRO_20338_RQP48&utm_source=default&utm_medium=card&utm_campaign=home&utm_content=binance">
+            Copiar link</button>
+  </div>
+</article>
+      <!-- PROTON (MAIL/VPN) -->
+      <article class="card" data-cat="Segurança">
+        <span class="badge">Privacidade</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/proton.me" alt="Logótipo Proton" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=PT'" />
+          <div>
+            <h3>Proton</h3>
+            <p class="tagline">Email/VPN focados em privacidade; encriptação ponta-a-ponta.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Sem logs</span>
+          <span class="perk">Criptografia forte</span>
+          <span class="perk">Ecosistema Proton</span>
+        </div>
+        <div class="cta" data-name="Proton">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://pr.tn/ref/YT17BY4CTXT0?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=proton">Abrir Proton</a>
+          <button class="btn secondary btn-copy" data-copy="https://pr.tn/ref/YT17BY4CTXT0?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=proton">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- BITREFILL -->
+      <article class="card" data-cat="Gift Cards">
+        <span class="badge">Gift Cards</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/bitrefill.com" alt="Logótipo Bitrefill" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=BR'" />
+          <div>
+            <h3>Bitrefill</h3>
+            <p class="tagline">Cartões-presente e recargas pagas com cripto.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Global</span>
+          <span class="perk">Entrega imediata</span>
+          <span class="perk">BTC/USDT/mais</span>
+        </div>
+        <div class="cta" data-name="Bitrefill">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://bitrefill.com/invite/nfew0p5j?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=bitrefill">Usar Bitrefill</a>
+          <button class="btn secondary btn-copy" data-copy="https://bitrefill.com/invite/nfew0p5j?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=bitrefill">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- GAMSGO -->
+      <article class="card" data-cat="Gift Cards">
+        <span class="badge">Gift Cards</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/gamsgo.com" alt="Logótipo Gamsgo" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=GG'" />
+          <div>
+            <h3>Gamsgo</h3>
+            <p class="tagline">Cartões e subscrições de jogos a preços competitivos.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Descontos em jogos</span>
+          <span class="perk">Gift cards digitais</span>
+          <span class="perk">Entrega rápida</span>
+        </div>
+        <div class="cta" data-name="Gamsgo">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://www.gamsgo.com/share/pQSfKc4b?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=gamsgo">Usar Gamsgo</a>
+          <button class="btn secondary btn-copy" data-copy="https://www.gamsgo.com/share/pQSfKc4b?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=gamsgo">Copiar link</button>
+        </div>
+      </article>
+<!-- INSTANT GAMING -->
+<article class="card" data-cat="Gift Cards">
+  <span class="badge">Jogos</span>
+  <div class="brand">
+    <img src="https://logo.clearbit.com/instant-gaming.com" alt="Logótipo Instant Gaming"
+         onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=IG'" />
+    <div>
+      <h3>Instant Gaming</h3>
+      <p class="tagline">Jogos digitais para PC e consolas com grandes descontos.</p>
+    </div>
+  </div>
+  <div class="perks">
+    <span class="perk">Descontos até 70%</span>
+    <span class="perk">Entrega imediata</span>
+    <span class="perk">PC, PS, Xbox</span>
+  </div>
+  <div class="cta" data-name="Instant Gaming">
+    <a class="btn primary" rel="nofollow sponsored noopener" target="_blank"
+       href="https://www.instant-gaming.com/?igr=gamer-eb58ffc&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=instant-gaming">
+       Usar Instant Gaming</a>
+    <button class="btn secondary btn-copy"
+            data-copy="https://www.instant-gaming.com/?igr=gamer-eb58ffc&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=instant-gaming">
+            Copiar link</button>
+  </div>
+</article>
+      <!-- AMAZON PRIME -->
+      <article class="card" data-cat="E-commerce">
+        <span class="badge">E-commerce</span>
+        <div class="brand">
+          <img src="amazon.png" alt="Logótipo Amazon" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=AZ'" />
+          <div>
+            <h3>Amazon Prime</h3>
+            <p class="tagline">Teste gratuito, entregas rápidas e Prime Video.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Teste gratuito</span>
+          <span class="perk">Entregas rápidas</span>
+          <span class="perk">Prime Video</span>
+        </div>
+        <div class="cta" data-name="Amazon Prime">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://www.amazon.es/pruebaprime?tag=registaeganha-21&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=amazon-prime">Ativar Prime</a>
+          <button class="btn secondary btn-copy" data-copy="https://www.amazon.es/pruebaprime?tag=registaeganha-21&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=amazon-prime">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- BANGGOOD -->
+      <article class="card" data-cat="E-commerce">
+        <span class="badge">E-commerce</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/banggood.com" alt="Logótipo Banggood" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=BG'" />
+          <div>
+            <h3>Banggood</h3>
+            <p class="tagline">Gadgets, eletrónica e muito mais com preços competitivos.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Campanhas frequentes</span>
+          <span class="perk">Envio internacional</span>
+          <span class="perk">Ofertas flash</span>
+        </div>
+        <div class="cta" data-name="Banggood">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://pt.banggood.com/allowaceinvitenew.html?&O=djhJR0lyZXZJZm1LbDVBbzFDdk9DTHBOYWVjNFVhWGVnNkhJRlZYdkI1az0--BG--3D&utm_channel=direct&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=banggood">Ir para Banggood</a>
+          <button class="btn secondary btn-copy" data-copy="https://pt.banggood.com/allowaceinvitenew.html?&O=djhJR0lyZXZJZm1LbDVBbzFDdk9DTHBOYWVjNFVhWGVnNkhJRlZYdkI1az0--BG--3D&utm_channel=direct&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=banggood">Copiar link</button>
+        </div>
+      </article>
+    </section>
+
+    <footer id="politica">
+      <p>© <span id="ano"></span> – Recomendações pessoais. Logótipos pertencem aos respetivos proprietários. <a href="privacidade.html" rel="nofollow">Privacidade</a> · <a href="cookies.html" rel="nofollow">Cookies</a></p>
+    </footer>
+  </div>
+
+  <script>
+    (function(){
+      // Atualiza ano
+      const y=document.getElementById('ano'); if(y) y.textContent=new Date().getFullYear();
+      // Filtros por categoria
+      const chips=[...document.querySelectorAll('.chip')];
+      const cards=[...document.querySelectorAll('.grid .card')];
+      function applyFilter(cat){ cards.forEach(card=>{ card.style.display=(cat==='Todos'||card.dataset.cat===cat)?'flex':'none'; }); }
+      chips.forEach(ch=>ch.addEventListener('click',()=>{ chips.forEach(x=>x.classList.remove('active')); ch.classList.add('active'); applyFilter(ch.dataset.cat||ch.textContent.trim()); }));
+      applyFilter('Todos');
+      // Copiar link
+      document.querySelectorAll('.btn-copy').forEach(b=>{ b.addEventListener('click', async ()=>{ try{ await navigator.clipboard.writeText(b.dataset.copy); const old=b.textContent; b.textContent='Copiado!'; setTimeout(()=>b.textContent=old,1200); }catch(e){ alert('Não foi possível copiar o link.'); } });});
+    })();
+  </script>
+
+  <!-- Cookie consent banner -->
+  <div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies" hidden>
+    <p>Este site utiliza cookies de afiliação para funcionar corretamente.
+       Ao continuar assumes a aceitação. Consulta a nossa
+       <a href="cookies.html">Política de Cookies</a>.
+    </p>
+    <button id="cookie-accept">Aceitar</button>
+  </div>
+
+  <script>
+    (function(){
+      const banner=document.getElementById('cookie-banner');
+      const btn=document.getElementById('cookie-accept');
+      if(!localStorage.getItem('cookies-accepted')){
+        banner.hidden=false;
+      }
+      btn.addEventListener('click',()=>{
+        localStorage.setItem('cookies-accepted','1');
+        banner.hidden=true;
+      });
+    })();
+  </script>
+</body>
+</html>
