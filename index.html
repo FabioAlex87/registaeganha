@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <style>
     :root { --bg:#0b0d10; --card:#12161b; --muted:#9fb1c1; --accent:#2aa9ff; --radius:18px; --shadow:0 8px 24px rgba(0,0,0,.25) }
-    *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:#e6eef6;font:16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif}
+    *{box-sizing:border-box} html,body{margin:0;padding:0;background:var(--bg);color:#e6eef6;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:1080px;margin:0 auto;padding:20px}
 
@@ -31,7 +31,7 @@
     .chip.active{background:var(--accent);color:#001725;border-color:transparent}
 
     /* Grid */
-    .grid{display:grid;grid-template-columns:repeat( auto-fill, minmax(260px,1fr) );gap:16px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(260px,1fr));gap:16px}
     .card{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:16px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow);position:relative;overflow:hidden}
     .badge{position:absolute;top:10px;right:10px;padding:4px 8px;border-radius:999px;font-size:12px;border:1px solid rgba(255,255,255,.12);color:#d8e9f7}
     .brand{display:flex;align-items:center;gap:12px}
@@ -60,35 +60,18 @@
     footer a{text-decoration:underline;color:#cfe8ff}
 
     /* Cookie banner */
-    #cookie-banner {
-      position: fixed;
-      bottom: 16px;
-      left: 50%;
-      transform: translateX(-50%);
-      max-width: 600px;
-      width: 90%;
-      background: #1e293b;
-      color: #f8fafc;
-      padding: 14px 16px;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,.5);
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      z-index: 9999;
+    #cookie-banner{
+      position:fixed;bottom:16px;left:50%;transform:translateX(-50%);
+      max-width:600px;width:90%;background:#1e293b;color:#f8fafc;
+      padding:14px 16px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.5);
+      display:flex;flex-direction:column;gap:8px;z-index:9999
     }
-    #cookie-banner p { margin: 0; font-size: 14px; line-height: 1.4 }
-    #cookie-banner button {
-      align-self: flex-end;
-      background: #0ea5e9;
-      color: #00111a;
-      font-weight: 700;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      cursor: pointer;
+    #cookie-banner p{margin:0;font-size:14px;line-height:1.4}
+    #cookie-banner button{
+      align-self:flex-end;background:#0ea5e9;color:#00111a;font-weight:700;
+      border:none;padding:8px 14px;border-radius:8px;cursor:pointer
     }
-    #cookie-banner button:hover { filter: brightness(1.1) }
+    #cookie-banner button:hover{filter:brightness(1.1)}
   </style>
 </head>
 <body>
@@ -202,82 +185,71 @@
           <button class="btn secondary btn-copy" data-copy="https://revolut.com/referral/?referral-code=fabiotim!AUG2-25-AR-L2&geo-redirect&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=revolut">Copiar link</button>
         </div>
       </article>
-<!-- WISE -->
-<article class="card" data-cat="Finanças">
-  <span class="badge">Transferências</span>
-  <div class="brand">
-    <img src="https://logo.clearbit.com/wise.com" alt="Logótipo Wise"
-         onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=W'" />
-    <div>
-      <h3>Wise</h3>
-      <p class="tagline">Conta multi-moeda e transferências internacionais baratas.</p>
-    </div>
-  </div>
-  <div class="perks">
-    <span class="perk">Transferências rápidas</span>
-    <span class="perk">Câmbio real</span>
-    <span class="perk">Conta multi-moeda</span>
-  </div>
-  <div class="cta" data-name="Wise">
-    <a class="btn primary" rel="nofollow sponsored noopener" target="_blank"
-       href="https://wise.com/invite/arhc/fabios1341?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=wise">
-       Abrir Wise</a>
-    <button class="btn secondary btn-copy"
-            data-copy="https://wise.com/invite/arhc/fabios1341?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=wise">
-            Copiar link</button>
-  </div>
-</article>
-<!-- MOEY -->
-<article class="card" data-cat="Finanças">
-  <span class="badge">Conta Digital</span>
-  <div class="brand">
-    <img src="https://logo.clearbit.com/moey.pt" alt="Logótipo Moey"
-         onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=MY'" />
-    <div>
-      <h3>Moey</h3>
-      <p class="tagline">Conta digital portuguesa, grátis e 100% mobile.</p>
-    </div>
-  </div>
-  <div class="perks">
-    <span class="perk">Cartão físico & virtual</span>
-    <span class="perk">Pagamentos MB WAY</span>
-    <span class="perk">Sem comissões</span>
-  </div>
-  <div class="cta" data-name="Moey">
-    <a class="btn primary" rel="nofollow sponsored noopener" target="_blank"
-       href="https://moey.pt/campaigns/moeyapp2020?token=moey8831!7&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=moey">
-       Abrir conta Moey</a>
-    <button class="btn secondary btn-copy"
-            data-copy="https://moey.pt/campaigns/moeyapp2020?token=moey8831!7&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=moey">
-            Copiar link</button>
-  </div>
-</article>
-<!-- SPLIIIT -->
-<article class="card" data-cat="Finanças">
-  <span class="badge">Gestão</span>
-  <div class="brand">
-    <img src="spliiit.png" alt="Logótipo Spliiit"
-         onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=SP'" />
-    <div>
-      <h3>Spliiit</h3>
-      <p class="tagline">Partilha de despesas simples entre amigos e família.</p>
-    </div>
-  </div>
-  <div class="perks">
-    <span class="perk">Gestão de grupos</span>
-    <span class="perk">Divisão automática</span>
-    <span class="perk">App prática</span>
-  </div>
-  <div class="cta" data-name="Spliit">
-    <a class="btn primary" rel="nofollow sponsored noopener" target="_blank"
-       href="https://splii.it/1841868381?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=spliit">
-       Abrir Spliit</a>
-    <button class="btn secondary btn-copy"
-            data-copy="https://splii.it/1841868381?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=spliit">
-            Copiar link</button>
-  </div>
-</article>
-      <!-- BINANCE -->
+
+      <!-- WISE -->
+      <article class="card" data-cat="Finanças">
+        <span class="badge">Transferências</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/wise.com" alt="Logótipo Wise" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=W'" />
+          <div>
+            <h3>Wise</h3>
+            <p class="tagline">Conta multi-moeda e transferências internacionais baratas.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Transferências rápidas</span>
+          <span class="perk">Câmbio real</span>
+          <span class="perk">Conta multi-moeda</span>
+        </div>
+        <div class="cta" data-name="Wise">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://wise.com/invite/arhc/fabios1341?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=wise">Abrir Wise</a>
+          <button class="btn secondary btn-copy" data-copy="https://wise.com/invite/arhc/fabios1341?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=wise">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- MOEY -->
+      <article class="card" data-cat="Finanças">
+        <span class="badge">Conta Digital</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/moey.pt" alt="Logótipo Moey" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=MY'" />
+          <div>
+            <h3>Moey</h3>
+            <p class="tagline">Conta digital portuguesa, grátis e 100% mobile.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Cartão físico & virtual</span>
+          <span class="perk">Pagamentos MB WAY</span>
+          <span class="perk">Sem comissões</span>
+        </div>
+        <div class="cta" data-name="Moey">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://moey.pt/campaigns/moeyapp2020?token=moey8831!7&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=moey">Abrir conta Moey</a>
+          <button class="btn secondary btn-copy" data-copy="https://moey.pt/campaigns/moeyapp2020?token=moey8831!7&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=moey">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- SPLIIIT -->
+      <article class="card" data-cat="Finanças">
+        <span class="badge">Gestão</span>
+        <div class="brand">
+          <img src="spliiit.png" alt="Logótipo Spliiit" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=SP'" />
+          <div>
+            <h3>Spliiit</h3>
+            <p class="tagline">Partilha de despesas simples entre amigos e família.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Gestão de grupos</span>
+          <span class="perk">Divisão automática</span>
+          <span class="perk">App prática</span>
+        </div>
+        <div class="cta" data-name="Spliiit">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://splii.it/1841868381?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=spliiit">Abrir Spliiit</a>
+          <button class="btn secondary btn-copy" data-copy="https://splii.it/1841868381?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=spliiit">Copiar link</button>
+        </div>
+      </article>
+
+      <!-- BINANCE (CPA) -->
       <article class="card" data-cat="Cripto">
         <span class="badge">Cripto</span>
         <div class="brand">
@@ -297,33 +269,30 @@
           <button class="btn secondary btn-copy" data-copy="https://www.binance.com/activity/referral-entry/CPA?ref=CPA_009B1AJY9L&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=binance">Copiar link</button>
         </div>
       </article>
-<!-- BINANCE -->
-<article class="card" data-cat="Cripto">
-  <span class="badge">Cripto</span>
-  <div class="brand">
-    <img src="https://logo.clearbit.com/binance.com" alt="Logótipo Binance"
-         onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=BN'" />
-    <div>
-      <h3>Binance</h3>
-      <p class="tagline">Exchange líder com elevada liquidez e comissões competitivas.</p>
-    </div>
-  </div>
-  <p class="alert">⚠️ Oferta de tokens! Promo válida até <strong>9 de setembro</strong>).</p>
-  <div class="perks">
-    <span class="perk">Spot & Futures</span>
-    <span class="perk">Taxas baixas</span>
-    <span class="perk">App iOS/Android</span>
-    <span class="perk">Oferta de tokens</span>
-  </div>
-  <div class="cta" data-name="Binance">
-    <a class="btn primary" rel="nofollow sponsored noopener" target="_blank"
-       href="https://www.binance.com/referral/earn-together/refer-in-hotsummer/claim?hl=en&ref=GRO_20338_RQP48&utm_source=default&utm_medium=card&utm_campaign=home&utm_content=binance">
-       Abrir Binance</a>
-    <button class="btn secondary btn-copy"
-            data-copy="https://www.binance.com/referral/earn-together/refer-in-hotsummer/claim?hl=en&ref=GRO_20338_RQP48&utm_source=default&utm_medium=card&utm_campaign=home&utm_content=binance">
-            Copiar link</button>
-  </div>
-</article>
+
+      <!-- BINANCE (Campanha) -->
+      <article class="card" data-cat="Cripto">
+        <span class="badge">Cripto</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/binance.com" alt="Logótipo Binance" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=BN'" />
+          <div>
+            <h3>Binance – Campanha</h3>
+            <p class="tagline">Ofertas de tokens e campanhas sazonais.</p>
+          </div>
+        </div>
+        <p class="alert">⚠️ Oferta de tokens! Promo válida até <strong>9 de setembro</strong>.</p>
+        <div class="perks">
+          <span class="perk">Spot & Futures</span>
+          <span class="perk">Taxas baixas</span>
+          <span class="perk">App iOS/Android</span>
+          <span class="perk">Oferta de tokens</span>
+        </div>
+        <div class="cta" data-name="Binance – Campanha">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://www.binance.com/referral/earn-together/refer-in-hotsummer/claim?hl=en&ref=GRO_20338_RQP48&utm_source=default&utm_medium=card&utm_campaign=home&utm_content=binance">Abrir Binance</a>
+          <button class="btn secondary btn-copy" data-copy="https://www.binance.com/referral/earn-together/refer-in-hotsummer/claim?hl=en&ref=GRO_20338_RQP48&utm_source=default&utm_medium=card&utm_campaign=home&utm_content=binance">Copiar link</button>
+        </div>
+      </article>
+
       <!-- PROTON (MAIL/VPN) -->
       <article class="card" data-cat="Segurança">
         <span class="badge">Privacidade</span>
@@ -386,31 +355,28 @@
           <button class="btn secondary btn-copy" data-copy="https://www.gamsgo.com/share/pQSfKc4b?utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=gamsgo">Copiar link</button>
         </div>
       </article>
-<!-- INSTANT GAMING -->
-<article class="card" data-cat="Gift Cards">
-  <span class="badge">Jogos</span>
-  <div class="brand">
-    <img src="https://logo.clearbit.com/instant-gaming.com" alt="Logótipo Instant Gaming"
-         onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=IG'" />
-    <div>
-      <h3>Instant Gaming</h3>
-      <p class="tagline">Jogos digitais para PC e consolas com grandes descontos.</p>
-    </div>
-  </div>
-  <div class="perks">
-    <span class="perk">Descontos até 70%</span>
-    <span class="perk">Entrega imediata</span>
-    <span class="perk">PC, PS, Xbox</span>
-  </div>
-  <div class="cta" data-name="Instant Gaming">
-    <a class="btn primary" rel="nofollow sponsored noopener" target="_blank"
-       href="https://www.instant-gaming.com/?igr=gamer-eb58ffc&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=instant-gaming">
-       Usar Instant Gaming</a>
-    <button class="btn secondary btn-copy"
-            data-copy="https://www.instant-gaming.com/?igr=gamer-eb58ffc&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=instant-gaming">
-            Copiar link</button>
-  </div>
-</article>
+
+      <!-- INSTANT GAMING -->
+      <article class="card" data-cat="Gift Cards">
+        <span class="badge">Jogos</span>
+        <div class="brand">
+          <img src="https://logo.clearbit.com/instant-gaming.com" alt="Logótipo Instant Gaming" onerror="this.onerror=null;this.src='https://via.placeholder.com/80x80.png?text=IG'" />
+          <div>
+            <h3>Instant Gaming</h3>
+            <p class="tagline">Jogos digitais para PC e consolas com grandes descontos.</p>
+          </div>
+        </div>
+        <div class="perks">
+          <span class="perk">Descontos até 70%</span>
+          <span class="perk">Entrega imediata</span>
+          <span class="perk">PC, PS, Xbox</span>
+        </div>
+        <div class="cta" data-name="Instant Gaming">
+          <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="https://www.instant-gaming.com/?igr=gamer-eb58ffc&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=instant-gaming">Usar Instant Gaming</a>
+          <button class="btn secondary btn-copy" data-copy="https://www.instant-gaming.com/?igr=gamer-eb58ffc&utm_source=registaeganha&utm_medium=card&utm_campaign=home&utm_content=instant-gaming">Copiar link</button>
+        </div>
+      </article>
+
       <!-- AMAZON PRIME -->
       <article class="card" data-cat="E-commerce">
         <span class="badge">E-commerce</span>
@@ -483,18 +449,28 @@
     <button id="cookie-accept">Aceitar</button>
   </div>
 
+  <!-- Script do banner de cookies (único e robusto) -->
   <script>
-    (function(){
-      const banner=document.getElementById('cookie-banner');
-      const btn=document.getElementById('cookie-accept');
-      if(!localStorage.getItem('cookies-accepted')){
-        banner.hidden=false;
-      }
-      btn.addEventListener('click',()=>{
-        localStorage.setItem('cookies-accepted','1');
-        banner.hidden=true;
+    if (!window.__cookieBannerInit) {
+      window.__cookieBannerInit = true;
+      document.addEventListener("DOMContentLoaded", function () {
+        const KEY = "cookies-accepted";
+        const banner = document.getElementById("cookie-banner");
+        const btn = document.getElementById("cookie-accept");
+        if (!banner || !btn) return;
+
+        if (!localStorage.getItem(KEY)) {
+          // pequena espera evita "flash" em navegações rápidas
+          setTimeout(() => { banner.hidden = false; }, 150);
+        }
+
+        btn.addEventListener("click", () => {
+          try { localStorage.setItem(KEY, "1"); } catch(e) {}
+          banner.hidden = true;
+        });
       });
-    })();
+    }
   </script>
 </body>
 </html>
+
