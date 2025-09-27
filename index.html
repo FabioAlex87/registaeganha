@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Regista & Ganha – Ofertas Amazon (Afiliado)</title>
+<meta name="description" content="Lista curada de produtos Amazon com desconto. Atualizado manualmente. Filtros por data e categoria." />
+<link rel="icon" type="image/png" href="favicon.png" />
+<style>
+  :root {
+    --bg:#0b0d10; --text:#e6eef6; --muted:#9fb1c1;
+    --card:#12161b; --line:rgba(255,255,255,.08);
+    --accent:#2aa9ff; --radius:16px; --shadow:0 8px 24px rgba(0,0,0,.25);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Noto Sans",sans-serif}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1100px;margin:0 auto;padding:20px}
+
+  header{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-bottom:14px}
+  .logo{width:48px;height:48px;border-radius:12px;background:radial-gradient(120% 120% at 20% 20%, #2aa9ff, #1b2330);display:grid;place-items:center;box-shadow:var(--shadow);font-weight:900}
+  h1{font-size:22px;margin:0}
+  .sub{margin:0;color:var(--muted)}
+  .actions{margin-left:auto;display:flex;gap:8px}
+  .btn{padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:#0f141a;color:var(--text);cursor:pointer}
+  .btn.primary{border-color:transparent;background:linear-gradient(180deg,#2aa9ff,#1d7fca);color:#001725;font-weight:800}
+
+  .controls{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin:14px 0 18px}
+  .controls .field{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}
+  .controls input,.controls select{width:100%;background:transparent;border:0;outline:none;color:var(--text)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0}
+  .chip{padding:6px 10px;border-radius:999px;border:1px solid var(--line);cursor:pointer}
+  .chip.active{background:var(--accent);color:#001725;border-color:transparent}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;display:flex;flex-direction:column;gap:10px;box-shadow:var(--shadow);position:relative}
+  .badge{position:absolute;top:10px;right:10px;font-size:12px;border:1px solid var(--line);padding:2px 8px;border-radius:999px;color:#d8e9f7}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand img{width:52px;height:52px;border-radius:10px;background:#0e1318;object-fit:cover}
+  .title{margin:0;font-size:16px}
+  .muted{color:var(--muted);font-size:13px}
+  .price{display:flex;align-items:baseline;gap:8px}
+  .old{color:#94a3b8;text-decoration:line-through}
+  .new{font-weight:900}
+  .cut{color:#22c55e;font-weight:800}
+  .cta{display:flex;gap:8px;margin-top:auto}
+  .cta a{flex:1;text-align:center;padding:10px;border-radius:12px;font-weight:800;border:1px solid transparent;background:linear-gradient(180deg,#2aa9ff,#1d7fca);color:#001725}
+  .empty{padding:20px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}
+
+  footer{margin:26px 0 10px;color:var(--muted);font-size:13px}
+  footer a{text-decoration:underline;color:#cfe8ff}
+
+  /* Cookie banner minimal e robusto */
+  #cookie-banner{display:none;position:fixed;bottom:16px;left:50%;transform:translateX(-50%);max-width:600px;width:92%;background:#1e293b;color:#f8fafc;padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.5);z-index:2147483647}
+  #cookie-banner.is-visible{display:flex;flex-direction:column;gap:8px}
+  #cookie-banner button{align-self:flex-end;background:#0ea5e9;color:#00111a;font-weight:800;border:0;padding:8px 14px;border-radius:8px;cursor:pointer}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">R&G</div>
+      <div>
+        <h1>Ofertas Amazon – Regista & Ganha</h1>
+        <p class="sub">Produtos com desconto atualizados manualmente. Foca-te no que baixou de preço nos últimos dias.</p>
+      </div>
+      <div class="actions">
+        <a class="btn" href="ofertas.html" rel="nofollow">Outras Ofertas (antiga)</a>
+      </div>
+    </header>
+
+    <!-- Controlo -->
+    <div class="controls">
+      <div class="field"><input id="q" type="search" placeholder="🔎 Procurar produto..."></div>
+      <div class="field">
+        <select id="periodo">
+          <option value="7" selected>Últimos 7 dias</option>
+          <option value="14">Últimos 14 dias</option>
+          <option value="30">Últimos 30 dias</option>
+          <option value="0">Sem filtro por data</option>
+        </select>
+      </div>
+      <div class="field">
+        <select id="ordenar">
+          <option value="desconto">Ordenar: Maior desconto</option>
+          <option value="recente" selected>Ordenar: Mais recente</option>
+          <option value="precoAsc">Preço: menor→maior</option>
+          <option value="precoDesc">Preço: maior→menor</option>
+        </select>
+      </div>
+      <div class="field">
+        <div class="chips" id="chips-cat">
+          <span class="chip active" data-cat="Todos">Todos</span>
+          <span class="chip" data-cat="Tecnologia">Tecnologia</span>
+          <span class="chip" data-cat="Casa">Casa</span>
+          <span class="chip" data-cat="Gaming">Gaming</span>
+          <span class="chip" data-cat="Outros">Outros</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grelha -->
+    <section class="grid" id="grid" aria-label="Lista de produtos"></section>
+    <div id="vazio" class="empty" hidden>Sem resultados para os filtros atuais.</div>
+
+    <footer>
+      <p><strong>Nota:</strong> Mostramos apenas descontos <u>ativos</u> com base em datas introduzidas manualmente.</p>
+      <p><em>Como associado da Amazon, posso receber comissão por compras qualificadas.</em><br>
+      “Amazon” e o logótipo da Amazon são marcas registadas da Amazon.com, Inc. ou das suas afiliadas. Preços e disponibilidade corretos à data da última atualização e sujeitos a alteração. <a href="privacidade.html" rel="nofollow">Privacidade</a> · <a href="cookies.html" rel="nofollow">Cookies</a></p>
+    </footer>
+  </div>
+
+  <!-- Banner Cookies -->
+  <div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Aviso de cookies">
+    <p>Usamos cookies apenas para funcionalidade básica e links de afiliação Amazon. Ao continuar assumes a aceitação. Consulta a <a href="cookies.html">Política de Cookies</a>.</p>
+    <button id="cookie-accept" type="button">Aceitar</button>
+  </div>
+
+<script>
+/* ==========================
+   Configurações
+========================== */
+const AMAZON_TAG = "registaeganha-21";           // <-- o teu tracking ID
+const AMAZON_DOMAIN = "www.amazon.es";           // ajusta se mudares de marketplace
+
+/* ==========================
+   Dados (edita aqui)
+   Campos: id, titulo, categoria, imagem, antigo, atual, inicio, fim, asin OU url
+========================== */
+const PRODUTOS = [
+  {
+    id:"echo-pop",
+    titulo:"Echo Pop (Alexa) – Coluna Inteligente",
+    categoria:"Tecnologia",
+    imagem:"https://m.media-amazon.com/images/I/71d5f8xqJPL._AC_SX522_.jpg",
+    antigo:49.99, atual:29.99,
+    inicio:"2025-09-20", fim:"2025-10-05",
+    asin:"B0C1WYYZ9Z"
+  },
+  {
+    id:"ssd-1tb",
+    titulo:"SSD NVMe 1TB PCIe 3.0",
+    categoria:"Tecnologia",
+    imagem:"https://m.media-amazon.com/images/I/71r5wKfVh+L._AC_SX679_.jpg",
+    antigo:79.99, atual:59.99,
+    inicio:"2025-09-24", fim:"2025-10-03",
+    url:"https://www.amazon.es/dp/B08K3QW8LF"
+  },
+  {
+    id:"airfryer",
+    titulo:"Airfryer 5L com visor digital",
+    categoria:"Casa",
+    imagem:"https://m.media-amazon.com/images/I/71s8lI5mPpL._AC_SX679_.jpg",
+    antigo:99.99, atual:69.99,
+    inicio:"2025-09-23", fim:"2025-10-06",
+    asin:"B09ABC1234"
+  }
+];
+
+/* ==========================
+   Lógica
+========================== */
+const $ = (q,el=document)=>el.querySelector(q);
+const $$ = (q,el=document)=>[...el.querySelectorAll(q)];
+const grid = $("#grid"), vazio = $("#vazio");
+const q = $("#q"), periodo = $("#periodo"), ordenar = $("#ordenar");
+const chips = $$("#chips-cat .chip");
+
+function afLink(item){
+  // Se vier ASIN, gera link curto; senão usa URL indicada
+  if(item.asin){
+    const u = new URL(`https://${AMAZON_DOMAIN}/dp/${item.asin}`);
+    u.searchParams.set("tag", AMAZON_TAG);
+    return u.toString();
+  } else if(item.url){
+    const u = new URL(item.url);
+    u.searchParams.set("tag", AMAZON_TAG);
+    return u.toString();
+  }
+  return "#";
+}
+
+function ativoHoje(item, agora=new Date()){
+  const ini = new Date(item.inicio+"T00:00:00");
+  const fim = new Date(item.fim+"T23:59:59");
+  return ini<=agora && agora<=fim;
+}
+function dentroPeriodo(item, dias){
+  if(dias===0) return true;
+  const ini = new Date(item.inicio+"T00:00:00");
+  const ago = new Date(); ago.setDate(ago.getDate()-dias);
+  return ini>=ago;
+}
+function descontoPct(item){
+  if(!item.antigo || !item.atual) return 0;
+  return Math.round((1 - (item.atual/item.antigo))*100);
+}
+
+function render(){
+  const termo = (q.value||"").toLowerCase();
+  const catSel = chips.find(c=>c.classList.contains("active"))?.dataset.cat || "Todos";
+  const dias = parseInt(periodo.value,10);
+
+  let lista = PRODUTOS
+    .filter(p=>ativoHoje(p))
+    .filter(p=>dentroPeriodo(p,dias))
+    .filter(p=> catSel==="Todos" ? true : p.categoria===catSel)
+    .filter(p=> p.titulo.toLowerCase().includes(termo));
+
+  // ordenar
+  const ord = ordenar.value;
+  lista.sort((a,b)=>{
+    if(ord==="desconto") return descontoPct(b)-descontoPct(a);
+    if(ord==="precoAsc") return a.atual-b.atual;
+    if(ord==="precoDesc") return b.atual-a.atual;
+    // recente: por início desc
+    return new Date(b.inicio)-new Date(a.inicio);
+  });
+
+  grid.innerHTML = "";
+  if(!lista.length){ vazio.hidden=false; return; } else { vazio.hidden=true; }
+
+  for(const p of lista){
+    const pct = descontoPct(p);
+    const card = document.createElement("article");
+    card.className = "card";
+    card.innerHTML = `
+      <span class="badge">${p.categoria}</span>
+      <div class="brand">
+        <img src="${p.imagem}" alt="${p.titulo}" onerror="this.onerror=null;this.src='https://via.placeholder.com/120x120.png?text=%F0%9F%9B%8D%EF%B8%8F'"/>
+        <div>
+          <h3 class="title">${p.titulo}</h3>
+          <p class="muted">Válido: ${p.inicio} – ${p.fim}</p>
+        </div>
+      </div>
+      <div class="price">
+        <span class="old">${p.antigo ? p.antigo.toFixed(2)+' €' : ''}</span>
+        <span class="new">${p.atual ? p.atual.toFixed(2)+' €' : ''}</span>
+        <span class="cut">${pct>0 ? '−'+pct+'%' : ''}</span>
+      </div>
+      <div class="cta">
+        <a class="btn primary" rel="nofollow sponsored noopener" target="_blank" href="${afLink(p)}">Ver na Amazon</a>
+      </div>
+    `;
+    grid.appendChild(card);
+  }
+}
+
+// eventos
+q.addEventListener("input", render);
+periodo.addEventListener("change", render);
+ordenar.addEventListener("change", render);
+chips.forEach(c=>c.addEventListener("click", ()=>{
+  chips.forEach(x=>x.classList.remove("active"));
+  c.classList.add("active");
+  render();
+}));
+
+// init
+render();
+
+/* ==========================
+   Banner Cookies robusto
+========================== */
+(function(){
+  if (window.__cookieBannerInit) return; window.__cookieBannerInit = true;
+  const KEY="cookies-accepted";
+  const banner=document.getElementById("cookie-banner");
+  const btn=document.getElementById("cookie-accept");
+  if(!banner||!btn) return;
+  if(!localStorage.getItem(KEY)){ setTimeout(()=>banner.classList.add("is-visible"),120); }
+  btn.addEventListener("click",(e)=>{ e.preventDefault(); try{localStorage.setItem(KEY,"1");}catch(e){} banner.classList.remove("is-visible"); }, {passive:false});
+})();
+</script>
+</body>
+</html>
