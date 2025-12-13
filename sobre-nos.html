@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sobre Nós – Regista & Ganha</title>
+    <meta name="description"
+        content="Saiba mais sobre a missão do Regista & Ganha e como encontramos os melhores descontos." />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="wrap">
+        <header>
+            <div class="brand-area">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="R&G Logo">
+                </a>
+                <div class="title">
+                    <h1>Sobre Nós</h1>
+                    <p>Conheça a equipa por trás dos descontos</p>
+                </div>
+            </div>
+        </header>
+
+        <nav class="main-nav">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link">Início</a>
+            </div>
+            <div class="nav-item" id="categories-menu">
+                <a href="#" class="nav-link">Categorias ▼</a>
+                <div class="dropdown" id="dropdown-categorias">
+                    <a href="category.html?id=todos">Todos os Cupões</a>
+                    <!-- More items can be dynamically populated or static -->
+                    <a href="category.html?id=eletronica">Eletrónica</a>
+                    <a href="category.html?id=casa-cozinha">Casa e Cozinha</a>
+                </div>
+            </div>
+            <div class="nav-item active">
+                <a href="sobre-nos.html" class="nav-link">Sobre nós</a>
+            </div>
+            <div class="nav-item">
+                <a href="contacto.html" class="nav-link">Contacto</a>
+            </div>
+        </nav>
+
+        <main class="page-content">
+            <h2>A Nossa Missão</h2>
+            <p>No <strong>Regista & Ganha</strong>, dedicamo-nos a encontrar as melhores oportunidades, cupões e
+                descontos exclusivos na Amazon para o mercado português.</p>
+            <p>Acreditamos que poupar não deve ser complicado. A nossa equipa verifica manualmente cada oferta para
+                garantir que obtém o melhor preço possível nos seus produtos favoritos, desde eletrónica de ponta a
+                essenciais para a casa.</p>
+
+            <h2 style="margin-top: 40px;">Porquê Nós?</h2>
+            <p>Somos parceiros oficiais da Amazon e utilizamos ferramentas avançadas para monitorizar descidas de preço
+                em tempo real.</p>
+        </main>
+
+        <footer>
+            <p>© <span id="year"></span> Regista & Ganha. Todos os direitos reservados.</p>
+            <p><a href="privacidade.html">Privacidade</a> · <a href="cookies.html">Cookies</a></p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Simple dropdown logic (re-used)
+        const catMenu = document.getElementById('categories-menu');
+        catMenu.addEventListener('click', () => catMenu.classList.toggle('open'));
+        document.addEventListener('click', (e) => {
+            if (!catMenu.contains(e.target)) catMenu.classList.remove('open');
+        });
+    </script>
+</body>
+
+</html>

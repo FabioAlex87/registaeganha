@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contacto – Regista & Ganha</title>
+    <meta name="description" content="Entre em contacto connosco para dúvidas ou parcerias." />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <div class="wrap">
+        <header>
+            <div class="brand-area">
+                <a href="index.html" class="logo">
+                    <img src="logo.png" alt="R&G Logo">
+                </a>
+                <div class="title">
+                    <h1>Contacto</h1>
+                    <p>Estamos aqui para ajudar</p>
+                </div>
+            </div>
+        </header>
+
+        <nav class="main-nav">
+            <div class="nav-item">
+                <a href="index.html" class="nav-link">Início</a>
+            </div>
+            <div class="nav-item" id="categories-menu">
+                <a href="#" class="nav-link">Categorias ▼</a>
+                <div class="dropdown" id="dropdown-categorias">
+                    <a href="category.html?id=todos">Todos os Cupões</a>
+                    <a href="category.html?id=eletronica">Eletrónica</a>
+                    <a href="category.html?id=casa-cozinha">Casa e Cozinha</a>
+                </div>
+            </div>
+            <div class="nav-item">
+                <a href="sobre-nos.html" class="nav-link">Sobre nós</a>
+            </div>
+            <div class="nav-item active">
+                <a href="contacto.html" class="nav-link">Contacto</a>
+            </div>
+        </nav>
+
+        <main class="page-content">
+            <h2>Envie-nos uma mensagem</h2>
+            <p>Tem alguma dúvida sobre um cupão ou sugestão de parceria? Preencha o formulário abaixo.</p>
+
+            <form class="contact-form" action="#" method="POST">
+                <div class="form-group">
+                    <label for="name">Nome</label>
+                    <input type="text" id="name" name="name" placeholder="O seu nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem</label>
+                    <textarea id="message" name="message" rows="5" placeholder="Como podemos ajudar?"
+                        required></textarea>
+                </div>
+                <button type="submit" class="btn primary" style="justify-content: center; margin-top: 10px;">Enviar
+                    Mensagem</button>
+            </form>
+        </main>
+
+        <footer>
+            <p>© <span id="year"></span> Regista & Ganha. Todos os direitos reservados.</p>
+            <p><a href="privacidade.html">Privacidade</a> · <a href="cookies.html">Cookies</a></p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const catMenu = document.getElementById('categories-menu');
+        catMenu.addEventListener('click', () => catMenu.classList.toggle('open'));
+        document.addEventListener('click', (e) => {
+            if (!catMenu.contains(e.target)) catMenu.classList.remove('open');
+        });
+    </script>
+</body>
+
+</html>
