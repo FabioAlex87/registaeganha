@@ -161,7 +161,11 @@ async function loadProducts() {
     try {
         const response = await fetch('products.json');
         if (!response.ok) throw new Error('Failed to load products');
-        allProducts = await response.json();
+
+        const data = await response.json();
+        // Support both old array structure and new object structure
+        allProducts = Array.isArray(data) ? data : (data.products || []);
+
         initPage();
     } catch (error) {
         console.error('Error loading products:', error);
