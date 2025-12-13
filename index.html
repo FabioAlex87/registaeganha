@@ -75,65 +75,12 @@
     </nav>
     <h2 style="margin-bottom: 20px; font-weight: 700; color: white;">Mais Clicados</h2>
     <section class="grid" id="grid">
-      <article class="card" data-cat="eletrodomesticos">
-        <span class="badge">Eletrodomésticos</span>
-        <img class="product-image" src="https://via.placeholder.com/300x180?text=IMAGEM+ASPIRADOR" alt="Aspirador Robô">
-        <div>
-          <h3>Aspirador Robô Inteligente XYZ</h3>
-          <p class="tagline">Limpeza totalmente automatizada para a sua casa.</p>
-        </div>
-        <div class="price-tag">
-          <div class="price-info">
-            <span class="discount-price">99,99€</span>
-            <span class="original-price">199,99€</span>
-          </div>
-          <span class="discount-badge">-50% OFF</span>
-        </div>
-
-        <div class="cta">
-          <a class="btn primary" href="[LINK_AFILIADO_CONTENTFUL]" target="_blank" rel="nofollow">
-            Ver Oferta Amazon
-          </a>
-          <button class="btn secondary btn-copy" data-copy="CUPAO50OFF" aria-label="Copiar cupão">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-            </svg>
-          </button>
-        </div>
-      </article>
-
-      <article class="card" data-cat="eletronica">
-        <span class="badge">Eletrónica</span>
-        <img class="product-image" src="https://via.placeholder.com/300x180?text=IMAGEM+AURIICULARES"
-          alt="Auriculares Bluetooth">
-        <div>
-          <h3>Auriculares Sem Fios Premium</h3>
-          <p class="tagline">Qualidade de som superior e bateria de longa duração.</p>
-        </div>
-        <div class="price-tag">
-          <div class="price-info">
-            <span class="discount-price">29,90€</span>
-            <span class="original-price">49,90€</span>
-          </div>
-          <span class="discount-badge">-40% OFF</span>
-        </div>
-        <div class="cta">
-          <a class="btn primary" href="[LINK_AFILIADO_CONTENTFUL]" target="_blank" rel="nofollow">
-            Ver Oferta Amazon
-          </a>
-          <button class="btn secondary btn-copy" data-copy="40AURI" aria-label="Copiar cupão">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-            </svg>
-          </button>
-        </div>
-      </article>
-
+      <!-- Products injected by scripts.js -->
     </section>
+
+    <div id="no-products" class="fallback" style="display: none; text-align: center; color: var(--text-muted);">
+      <p>A carregar ofertas...</p>
+    </div>
 
     <footer>
       <p>© <span id="year"></span> Regista & Ganha. Todos os direitos reservados.</p>
@@ -146,52 +93,7 @@
     <button id="cookie-accept">Aceitar</button>
   </div>
 
-  <script>
-    // Year and Cookie Banner JS kept.
-
-    // Copy Buttons JS kept as it is useful for coupon codes.
-    document.querySelectorAll('.btn-copy').forEach(btn => {
-      btn.addEventListener('click', async () => {
-        const link = btn.dataset.copy;
-        try {
-          await navigator.clipboard.writeText(link);
-          const originalIcon = btn.innerHTML;
-          btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-          setTimeout(() => {
-            btn.innerHTML = originalIcon;
-          }, 2000);
-        } catch (err) {
-          console.error('Failed to copy', err);
-        }
-      });
-    });
-
-    // NOVO JS: Lógica do Dropdown de Categorias
-    const categoriesMenu = document.getElementById('categories-menu');
-    const categoriesDropdown = document.getElementById('dropdown-categorias');
-
-    // Toggle do Dropdown ao clicar
-    categoriesMenu.addEventListener('click', (event) => {
-      // Impede o clique de fechar imediatamente se for no link principal
-      if (event.target.closest('.nav-link')) {
-        event.preventDefault();
-        categoriesMenu.classList.toggle('open');
-        categoriesDropdown.setAttribute('aria-expanded', categoriesMenu.classList.contains('open'));
-      }
-    });
-
-    // Fechar o Dropdown ao clicar fora
-    document.addEventListener('click', (event) => {
-      if (!categoriesMenu.contains(event.target)) {
-        categoriesMenu.classList.remove('open');
-        categoriesDropdown.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    // Removida toda a lógica de filtro de chips anterior, pois o novo fluxo
-    // deve ser baseado em páginas estáticas (categoria-slug.html) geradas pelo
-    // seu script de build, ou uma nova implementação de filtragem JS/Contentful.
-  </script>
+  <script src="scripts.js"></script>
 </body>
 
 </html>

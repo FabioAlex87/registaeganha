@@ -1,0 +1,54 @@
+[
+  {
+    "id": "prod_001",
+    "cat": "eletrodomesticos",
+    "title": "Aspirador Robô Inteligente XYZ",
+    "description": "Limpeza totalmente automatizada para a sua casa.",
+    "price": "99,99€",
+    "oldPrice": "199,99€",
+    "discount": "-50% OFF",
+    "img": "https://via.placeholder.com/300x180?text=IMAGEM+ASPIRADOR",
+    "link": "https://amzn.to/EXAMPLE_LINK",
+    "coupon": "CUPAO50OFF",
+    "isPopular": true
+  },
+  {
+    "id": "prod_002",
+    "cat": "eletronica",
+    "title": "Auriculares Sem Fios Premium",
+    "description": "Qualidade de som superior e bateria de longa duração.",
+    "price": "29,90€",
+    "oldPrice": "49,90€",
+    "discount": "-40% OFF",
+    "img": "https://via.placeholder.com/300x180?text=IMAGEM+AURIICULARES",
+    "link": "https://amzn.to/EXAMPLE_LINK",
+    "coupon": "40AURI",
+    "isPopular": true
+  },
+  {
+    "id": "prod_003",
+    "cat": "casa-cozinha",
+    "title": "Fritadeira Sem Óleo 5L",
+    "description": "Cozinha saudável para toda a família.",
+    "price": "75,00€",
+    "oldPrice": "120,00€",
+    "discount": "-35% OFF",
+    "img": "https://via.placeholder.com/300x180?text=IMAGEM+FRITADEIRA",
+    "link": "https://amzn.to/EXAMPLE_LINK",
+    "coupon": "FRITA35",
+    "isPopular": false
+  },
+  {
+    "id": "prod_004",
+    "cat": "computadores",
+    "title": "Monitor Gaming 27p",
+    "description": "144Hz, 1ms resposta, IPS.",
+    "price": "199,00€",
+    "oldPrice": "250,00€",
+    "discount": "-20% OFF",
+    "img": "https://via.placeholder.com/300x180?text=IMAGEM+MONITOR",
+    "link": "https://amzn.to/EXAMPLE_LINK",
+    "coupon": "GAME20",
+    "isPopular": false
+  }
+]
