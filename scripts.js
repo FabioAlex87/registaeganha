@@ -23,16 +23,21 @@ function initPage() {
     // Logic for Category Page
     if (window.location.pathname.includes('category.html')) {
         const titleSpan = document.getElementById('category-title');
+        const description = document.getElementById('category-description');
 
         let filtered = [];
         if (!categoryId || categoryId === 'todos') {
             filtered = allProducts;
             if (titleSpan) titleSpan.textContent = "Todos os Cupões";
+            if (description) description.textContent = "Encontre os melhores descontos por categoria.";
         } else {
             filtered = allProducts.filter(p => p.cat === categoryId);
             // Format title
             if (titleSpan) {
                 titleSpan.textContent = categoryId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            }
+            if (description) {
+                description.textContent = "Resultados filtrados para \"" + categoryId.replace(/-/g, ' ') + "\".";
             }
         }
         renderGrid(filtered);
