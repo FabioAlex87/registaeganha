@@ -33,8 +33,10 @@
                 <a href="index.html" class="nav-link">Início</a>
             </div>
             <div class="nav-item" id="categories-menu">
-                <a href="#" class="nav-link">Categorias ▼</a>
-                <div class="dropdown" id="dropdown-categorias">
+                <a href="#" class="nav-link" aria-expanded="false" aria-controls="dropdown-categorias">
+                    Categorias <span class="nav-caret" aria-hidden="true">▼</span>
+                </a>
+                <div class="dropdown" id="dropdown-categorias" role="menu">
                     <a href="category.html?id=todos">Todos os Cupões</a>
                     <a href="category.html?id=amazon-renewed">Amazon Renewed</a>
                     <a href="category.html?id=aparelhos-acessorios">Aparelhos e Acessórios Amazon</a>
@@ -59,7 +61,7 @@
                 <a href="sobre-nos.html" class="nav-link">Sobre nós</a>
             </div>
             <div class="nav-item active">
-                <a href="contacto.html" class="nav-link">Contacto</a>
+                <a href="contacto.html" class="nav-link" aria-current="page">Contacto</a>
             </div>
             <div class="nav-item">
                 <a href="https://t.me/registaganha" target="_blank" class="nav-link"
@@ -101,15 +103,7 @@
         </footer>
     </div>
 
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        const catMenu = document.getElementById('categories-menu');
-        catMenu.addEventListener('click', () => catMenu.classList.toggle('open'));
-        document.addEventListener('click', (e) => {
-            if (!catMenu.contains(e.target)) catMenu.classList.remove('open');
-        });
-    </script>
+    <script src="scripts.js"></script>
 </body>
 
 </html>

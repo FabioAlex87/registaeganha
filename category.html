@@ -32,8 +32,10 @@
                 <a href="index.html" class="nav-link">Início</a>
             </div>
             <div class="nav-item active" id="categories-menu">
-                <a href="#" class="nav-link">Categorias ▼</a>
-                <div class="dropdown" id="dropdown-categorias">
+                <a href="#" class="nav-link" aria-expanded="false" aria-controls="dropdown-categorias">
+                    Categorias <span class="nav-caret" aria-hidden="true">▼</span>
+                </a>
+                <div class="dropdown" id="dropdown-categorias" role="menu">
                     <a href="category.html?id=todos">Todos os Cupões</a>
                     <a href="category.html?id=amazon-renewed">Amazon Renewed</a>
                     <a href="category.html?id=aparelhos-acessorios">Aparelhos e Acessórios Amazon</a>
