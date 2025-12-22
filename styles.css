@@ -269,7 +269,7 @@ header {
 }
 
 .toolbar-group select {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--glass-bg);
     color: #fff;
     border: 1px solid var(--card-border);
     border-radius: 8px;
@@ -277,6 +277,8 @@ header {
     font-weight: 600;
     cursor: pointer;
     appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
 .toolbar-group select option {
