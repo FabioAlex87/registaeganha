@@ -84,6 +84,19 @@
             "link": "https://amzn.to/494gMqf",
             "coupon": "",
             "isPopular": true
+        },
+        {
+            "id": "prod_006",
+            "cat": "eletronica",
+            "title": "Tomadas inteligentes TP-Link Tapo",
+            "description": "2 tomadas inteligentes brancas para controlo sem fios",
+            "price": "19,21€",
+            "oldPrice": "30,49€",
+            "discount": "-37% OFF",
+            "img": "https://m.media-amazon.com/images/I/71Yw9VTCC1L._AC_SL1500_.jpg",
+            "link": "https://amzn.to/4pMHQkX",
+            "coupon": "",
+            "isPopular": true
         }
     ]
 }
