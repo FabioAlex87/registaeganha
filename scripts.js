@@ -386,73 +386,10 @@ function setupMenuDropdown() {
 }
 
 function isCategoryView() {
-    return typeof window !== 'undefined' && window.location.pathname.includes('category.html');
-}
-
-function sortProducts(products, sortKey) {
-    const items = [...products];
-    switch (sortKey) {
-        case 'discount':
-            return items.sort((a, b) => extractPercent(b.discount) - extractPercent(a.discount));
-        case 'price-asc':
-            return items.sort((a, b) => extractPrice(a.price) - extractPrice(b.price));
-        case 'price-desc':
-            return items.sort((a, b) => extractPrice(b.price) - extractPrice(a.price));
-        case 'alpha':
-            return items.sort((a, b) => a.title.localeCompare(b.title, 'pt'));
-        default:
-            return items;
-    }
-}
-
-function extractPercent(text = '') {
-    const match = text.match(/(-?\d+)/);
-    return match ? parseInt(match[1], 10) : 0;
-}
-
-function extractPrice(text = '') {
-    const normalized = text.replace(/[^\d.,-]/g, '').replace('.', '').replace(',', '.');
-    const value = parseFloat(normalized);
-    return Number.isFinite(value) ? value : Number.MAX_SAFE_INTEGER;
-}
-
-function setupCookieBanner() {
-    const cookieBanner = document.getElementById('cookie-banner');
-    const btnAccept = document.getElementById('cookie-accept');
-    const btnReject = document.getElementById('cookie-reject');
-    const btnManage = document.getElementById('cookie-manage');
-    const btnReset = document.getElementById('cookie-reset');
-    const details = document.getElementById('cookie-details');
-
-    if (!cookieBanner || !btnAccept || !btnReject) return;
-
-    const choice = localStorage.getItem('cookiesChoice');
-    if (!choice) {
-        setTimeout(() => cookieBanner.classList.add('show'), 2000);
-    }
-
-    const saveChoice = (value) => {
-        localStorage.setItem('cookiesChoice', value);
-        cookieBanner.classList.remove('show');
-    };
-
-    btnAccept.addEventListener('click', () => saveChoice('accepted'));
-    btnReject.addEventListener('click', () => saveChoice('rejected'));
-
-    if (btnManage && details) {
-        btnManage.addEventListener('click', () => {
-            const isHidden = details.hasAttribute('hidden');
-            details.toggleAttribute('hidden');
-            btnManage.setAttribute('aria-expanded', String(!isHidden));
-        });
-    }
-
-    if (btnReset) {
-        btnReset.addEventListener('click', () => {
-            localStorage.removeItem('cookiesChoice');
-            cookieBanner.classList.add('show');
-        });
-    }
+    if (typeof window === 'undefined') return false;
+    const path = window.location.pathname || '';
+    // Compat: works for /category, /category/, /category.html and variations
+    return path.includes('category');
 }
 
 function setupMenuDropdown() {
