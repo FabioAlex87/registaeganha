@@ -39,13 +39,13 @@
 
     <nav class="main-nav">
       <div class="nav-item active">
-        <a href="#" class="nav-link">Início</a>
+        <a href="#" class="nav-link" aria-current="page">Início</a>
       </div>
       <div class="nav-item" id="categories-menu">
         <a href="#" class="nav-link" aria-expanded="false" aria-controls="dropdown-categorias">
-          Categorias <span style="font-size: 12px;">▼</span>
+          Categorias <span class="nav-caret" aria-hidden="true">▼</span>
         </a>
-        <div class="dropdown" id="dropdown-categorias">
+        <div class="dropdown" id="dropdown-categorias" role="menu">
           <a href="category.html?id=todos">Todos os Cupões</a>
           <a href="category.html?id=amazon-renewed">Amazon Renewed</a>
           <a href="category.html?id=aparelhos-acessorios">Aparelhos e Acessórios Amazon</a>
@@ -85,6 +85,19 @@
         </a>
       </div>
     </nav>
+
+    <div class="toolbar">
+      <div class="toolbar-group">
+        <label for="sort-select">Ordenar</label>
+        <select id="sort-select" aria-label="Ordenar resultados">
+          <option value="featured" selected>Em destaque</option>
+          <option value="discount">Maior desconto</option>
+          <option value="price-asc">Preço mais baixo</option>
+          <option value="price-desc">Preço mais alto</option>
+          <option value="alpha">A–Z</option>
+        </select>
+      </div>
+    </div>
     <h2 style="margin-bottom: 20px; font-weight: 700; color: white;">Mais Clicados</h2>
     <section class="grid" id="grid">
       <!-- Products injected by scripts.js -->
@@ -100,9 +113,20 @@
     </footer>
   </div>
 
-  <div id="cookie-banner">
-    <p>Usamos cookies para garantir a melhor experiência. Ao continuar, aceitas a nossa política.</p>
-    <button id="cookie-accept">Aceitar</button>
+  <div id="cookie-banner" role="dialog" aria-live="polite" aria-label="Preferências de cookies">
+    <div class="cookie-text">
+      <p>Usamos cookies essenciais e de performance para melhorar a experiência. Podes aceitar ou recusar.</p>
+      <button id="cookie-manage" class="link-btn" type="button">Saber mais</button>
+    </div>
+    <div class="cookie-actions">
+      <button id="cookie-reject" class="btn ghost" type="button">Recusar</button>
+      <button id="cookie-accept" class="btn primary" type="button">Aceitar</button>
+    </div>
+    <div id="cookie-details" class="cookie-details" hidden>
+      <p>Guardamos a tua escolha no dispositivo. Podes alterar a qualquer momento limpando as preferências ou
+        revendo esta mensagem.</p>
+      <button id="cookie-reset" class="link-btn" type="button">Limpar escolha</button>
+    </div>
   </div>
 
   <script src="scripts.js"></script>
