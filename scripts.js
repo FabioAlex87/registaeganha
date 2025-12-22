@@ -391,3 +391,28 @@ function isCategoryView() {
     // Compat: works for /category, /category/, /category.html and variations
     return path.includes('category');
 }
+
+function setupMenuDropdown() {
+    const menu = document.getElementById('categories-menu');
+    const trigger = menu?.querySelector('.nav-link');
+    if (!menu || !trigger) return;
+
+    const toggleMenu = (open) => {
+        const isOpen = open ?? !menu.classList.contains('open');
+        menu.classList.toggle('open', isOpen);
+        trigger.setAttribute('aria-expanded', String(isOpen));
+    };
+
+    trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleMenu();
+    });
+
+    trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') toggleMenu(false);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!menu.contains(e.target)) toggleMenu(false);
+    });
+}
