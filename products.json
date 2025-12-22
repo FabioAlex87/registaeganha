@@ -23,14 +23,14 @@
         {
             "id": "prod_001",
             "cat": "eletrodomesticos",
-            "title": "Aspirador Robô Inteligente XYZ",
-            "description": "Limpeza totalmente automatizada para a sua casa.",
-            "price": "99,99€",
-            "oldPrice": "199,99€",
-            "discount": "-50% OFF",
-            "img": "https://via.placeholder.com/300x180?text=IMAGEM+ASPIRADOR",
-            "link": "https://amzn.to/EXAMPLE_LINK",
-            "coupon": "CUPAO50OFF",
+            "title": "Cobertura de estendal com aquecedor Rayen",
+            "description": "Cobertura de estendal com aquecedor | secagem rápida | consumo mínimo | Extensível | Tomada | cinzento | medidas: 105 - 180 x 56 x 106 cm",
+            "price": "45,23€",
+            "oldPrice": "46,74€",
+            "discount": "-3% OFF",
+            "img": "",
+            "link": "https://amzn.to/48QYk5N",
+            "coupon": "",
             "isPopular": true
         },
         {
