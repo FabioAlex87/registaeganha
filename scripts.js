@@ -4,10 +4,12 @@
 
 // Global State
 let allProducts = [];
+let currentSort = 'featured';
 
 // DOM Elements
 const grid = document.getElementById('grid');
 const noProductsMsg = document.getElementById('no-products');
+const sortSelect = document.getElementById('sort-select');
 
 // 1. Fetch Data
 // 1. Fetch Data
@@ -21,16 +23,21 @@ function initPage() {
     // Logic for Category Page
     if (window.location.pathname.includes('category.html')) {
         const titleSpan = document.getElementById('category-title');
+        const description = document.getElementById('category-description');
 
         let filtered = [];
         if (!categoryId || categoryId === 'todos') {
             filtered = allProducts;
             if (titleSpan) titleSpan.textContent = "Todos os Cupões";
+            if (description) description.textContent = "Encontre os melhores descontos por categoria.";
         } else {
             filtered = allProducts.filter(p => p.cat === categoryId);
             // Format title
             if (titleSpan) {
                 titleSpan.textContent = categoryId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            }
+            if (description) {
+                description.textContent = "Resultados filtrados para \"" + categoryId.replace(/-/g, ' ') + "\".";
             }
         }
         renderGrid(filtered);
@@ -56,7 +63,9 @@ function renderGrid(products) {
     grid.style.display = 'grid';
     if (noProductsMsg) noProductsMsg.style.display = 'none';
 
-    grid.innerHTML = products.map(p => `
+    const sorted = sortProducts(products, currentSort);
+
+    grid.innerHTML = sorted.map(p => `
     <article class="card">
       <span class="badge">${p.cat.replace(/-/g, ' ')}</span>
       <img class="product-image" src="${p.img}" alt="${p.title}" loading="lazy">
@@ -100,31 +109,30 @@ async function copyCode(btn, code) {
         }, 2000);
     } catch (err) {
         console.error('Failed to copy', err);
+        // Fallback: select text approach
+        const temp = document.createElement('textarea');
+        temp.value = code;
+        document.body.appendChild(temp);
+        temp.select();
+        try {
+            document.execCommand('copy');
+        } catch (copyErr) {
+            console.error('Fallback copy failed', copyErr);
+        }
+        document.body.removeChild(temp);
     }
 }
 
 // 5. Utils: Mobile Menu
 // Wait for DOM
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile Menu Logic
-    const mobileMenuBtn = document.getElementById('categories-menu');
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', (e) => {
-            // Only toggle if clicking the link itself, or handle differently for mobile
-            // For now, simpler toggle
-            if (window.innerWidth <= 768) {
-                const dropdown = mobileMenuBtn.querySelector('.dropdown');
-            }
-            // The CSS hover works for desktop. 
-            // For click-to-open on mobile/tablet, simple toggle class
-            mobileMenuBtn.classList.toggle('open');
-        });
+    setupMenuDropdown();
 
-        // Close when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!mobileMenuBtn.contains(e.target)) {
-                mobileMenuBtn.classList.remove('open');
-            }
+    // Sort select
+    if (sortSelect) {
+        sortSelect.addEventListener('change', (event) => {
+            currentSort = event.target.value;
+            initPage();
         });
     }
 
@@ -136,25 +144,14 @@ document.addEventListener('DOMContentLoaded', () => {
     loadProducts();
 
     // Cookie Banner Logic
-    const cookieBanner = document.getElementById('cookie-banner');
-    const cookieBtn = document.getElementById('cookie-accept');
-
-    if (cookieBanner && cookieBtn) {
-        if (!localStorage.getItem('cookiesAccepted')) {
-            setTimeout(() => {
-                cookieBanner.classList.add('show');
-            }, 2000);
-        }
-
-        cookieBtn.addEventListener('click', () => {
-            localStorage.setItem('cookiesAccepted', 'true');
-            cookieBanner.classList.remove('show');
-        });
-    }
+    setupCookieBanner();
 });
 
 // Update loadProducts to handle local file CORS errors
 async function loadProducts() {
+    // Only fetch when grid exists on the page
+    if (!grid && !noProductsMsg) return;
+
     // Show loading state if possible
     if (noProductsMsg) noProductsMsg.style.display = 'block';
 
@@ -183,4 +180,95 @@ async function loadProducts() {
             grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">${msg}</div>`;
         }
     }
+}
+
+function sortProducts(products, sortKey) {
+    const items = [...products];
+    switch (sortKey) {
+        case 'discount':
+            return items.sort((a, b) => extractPercent(b.discount) - extractPercent(a.discount));
+        case 'price-asc':
+            return items.sort((a, b) => extractPrice(a.price) - extractPrice(b.price));
+        case 'price-desc':
+            return items.sort((a, b) => extractPrice(b.price) - extractPrice(a.price));
+        case 'alpha':
+            return items.sort((a, b) => a.title.localeCompare(b.title, 'pt'));
+        default:
+            return items;
+    }
+}
+
+function extractPercent(text = '') {
+    const match = text.match(/(-?\d+)/);
+    return match ? parseInt(match[1], 10) : 0;
+}
+
+function extractPrice(text = '') {
+    const normalized = text.replace(/[^\d.,-]/g, '').replace('.', '').replace(',', '.');
+    const value = parseFloat(normalized);
+    return Number.isFinite(value) ? value : Number.MAX_SAFE_INTEGER;
+}
+
+function setupCookieBanner() {
+    const cookieBanner = document.getElementById('cookie-banner');
+    const btnAccept = document.getElementById('cookie-accept');
+    const btnReject = document.getElementById('cookie-reject');
+    const btnManage = document.getElementById('cookie-manage');
+    const btnReset = document.getElementById('cookie-reset');
+    const details = document.getElementById('cookie-details');
+
+    if (!cookieBanner || !btnAccept || !btnReject) return;
+
+    const choice = localStorage.getItem('cookiesChoice');
+    if (!choice) {
+        setTimeout(() => cookieBanner.classList.add('show'), 2000);
+    }
+
+    const saveChoice = (value) => {
+        localStorage.setItem('cookiesChoice', value);
+        cookieBanner.classList.remove('show');
+    };
+
+    btnAccept.addEventListener('click', () => saveChoice('accepted'));
+    btnReject.addEventListener('click', () => saveChoice('rejected'));
+
+    if (btnManage && details) {
+        btnManage.addEventListener('click', () => {
+            const isHidden = details.hasAttribute('hidden');
+            details.toggleAttribute('hidden');
+            btnManage.setAttribute('aria-expanded', String(!isHidden));
+        });
+    }
+
+    if (btnReset) {
+        btnReset.addEventListener('click', () => {
+            localStorage.removeItem('cookiesChoice');
+            cookieBanner.classList.add('show');
+        });
+    }
+}
+
+function setupMenuDropdown() {
+    const menu = document.getElementById('categories-menu');
+    const trigger = menu?.querySelector('.nav-link');
+    if (!menu || !trigger) return;
+
+    const toggleMenu = (open) => {
+        const isOpen = open ?? !menu.classList.contains('open');
+        menu.classList.toggle('open', isOpen);
+        trigger.setAttribute('aria-expanded', String(isOpen));
+    };
+
+    trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleMenu();
+    });
+
+    trigger.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') toggleMenu(false);
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!menu.contains(e.target)) toggleMenu(false);
+    });
 }
