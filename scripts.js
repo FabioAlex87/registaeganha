@@ -24,8 +24,26 @@ function initPage() {
     const isCategoryPage = isCategoryView();
 
     // Logic for Category Page
-    if (isCategoryPage) {
-        applyCategoryFilter(categoryId, false);
+    if (window.location.pathname.includes('category.html')) {
+        const titleSpan = document.getElementById('category-title');
+        const description = document.getElementById('category-description');
+
+        let filtered = [];
+        if (!categoryId || categoryId === 'todos') {
+            filtered = allProducts;
+            if (titleSpan) titleSpan.textContent = "Todos os Cupões";
+            if (description) description.textContent = "Encontre os melhores descontos por categoria.";
+        } else {
+            filtered = allProducts.filter(p => p.cat === categoryId);
+            // Format title
+            if (titleSpan) {
+                titleSpan.textContent = categoryId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            }
+            if (description) {
+                description.textContent = "Resultados filtrados para \"" + categoryId.replace(/-/g, ' ') + "\".";
+            }
+        }
+        renderGrid(filtered);
     }
     // Logic for Home Page (Popular)
     else {
@@ -117,11 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sortSelect) {
         sortSelect.addEventListener('change', (event) => {
             currentSort = event.target.value;
-            if (isCategoryView()) {
-                applyCategoryFilter(currentCategoryId || 'todos', false);
-            } else {
-                initPage();
-            }
+            initPage();
         });
     }
 
@@ -169,33 +183,6 @@ async function loadProducts() {
             grid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-muted);">${msg}</div>`;
         }
     }
-}
-
-function applyCategoryFilter(categoryId = 'todos', updateUrl = true) {
-    currentCategoryId = categoryId || 'todos';
-    const titleSpan = document.getElementById('category-title');
-    const description = document.getElementById('category-description');
-    const normalizedId = currentCategoryId;
-    let filtered = [];
-
-    if (!normalizedId || normalizedId === 'todos') {
-        filtered = allProducts;
-        if (titleSpan) titleSpan.textContent = "Todos os Cupões";
-        if (description) description.textContent = "Encontre os melhores descontos por categoria.";
-    } else {
-        filtered = allProducts.filter(p => p.cat === normalizedId);
-        const formatted = normalizedId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-        if (titleSpan) titleSpan.textContent = formatted;
-        if (description) description.textContent = `Resultados filtrados para "${formatted}".`;
-    }
-
-    if (updateUrl && typeof window !== 'undefined' && window.history && isCategoryView()) {
-        const url = new URL(window.location.href);
-        url.searchParams.set('id', normalizedId);
-        window.history.replaceState({}, '', url);
-    }
-
-    renderGrid(filtered);
 }
 
 function sortProducts(products, sortKey) {
@@ -287,22 +274,4 @@ function setupMenuDropdown() {
     document.addEventListener('click', (e) => {
         if (!menu.contains(e.target)) toggleMenu(false);
     });
-
-    // Handle in-page category filter without full reload when already on category page
-    const links = menu.querySelectorAll('.dropdown a[href*="category.html?id="]');
-    links.forEach((link) => {
-        link.addEventListener('click', (e) => {
-            if (isCategoryView()) {
-                e.preventDefault();
-                const linkUrl = new URL(link.href);
-                const catId = linkUrl.searchParams.get('id') || 'todos';
-                applyCategoryFilter(catId, true);
-                toggleMenu(false);
-            }
-        });
-    });
-}
-
-function isCategoryView() {
-    return typeof window !== 'undefined' && window.location.pathname.includes('category.html');
 }
