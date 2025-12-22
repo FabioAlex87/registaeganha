@@ -5,6 +5,7 @@
 // Global State
 let allProducts = [];
 let currentSort = 'featured';
+let currentCategoryId = null;
 
 // DOM Elements
 const grid = document.getElementById('grid');
@@ -18,7 +19,9 @@ const sortSelect = document.getElementById('sort-select');
 // 2. Determine Page Type & Render
 function initPage() {
     const urlParams = new URLSearchParams(window.location.search);
-    const categoryId = urlParams.get('id');
+    const categoryId = urlParams.get('id') || 'todos';
+    currentCategoryId = categoryId;
+    const isCategoryPage = isCategoryView();
 
     // Logic for Category Page
     if (window.location.pathname.includes('category.html')) {
