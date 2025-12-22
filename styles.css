@@ -270,7 +270,6 @@ header {
 
 .toolbar-group select {
     background: var(--glass-bg);
-    background: rgba(255, 255, 255, 0.05);
     color: #fff;
     border: 1px solid var(--card-border);
     border-radius: 8px;
