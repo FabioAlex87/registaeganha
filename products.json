@@ -136,6 +136,19 @@
             "link": "https://amzn.to/4psb0VP",
             "coupon": "",
             "isPopular": true
+        },
+         {
+            "id": "prod_010",
+            "cat": "eletronica",
+            "title": "XIAOMI Redmi Pad 2 Tablet de 11' 2,5 K",
+            "description": "XIAOMI Redmi Pad 2 Tablet de 11' 2,5 K (MediaTek G100-Ultra, 4 GB de RAM, 128 GB de ROM, WiFi 5 + Bluetooth 5.3, bateria de 9000 mAh, verde)",
+            "price": "144,29€",
+            "oldPrice": "203,29€",
+            "discount": "-29% OFF",
+            "img": "https://m.media-amazon.com/images/I/61Gj7HH8CbL._AC_SL1500_.jpg",
+            "link": "https://amzn.to/4qo7tsn",
+            "coupon": "",
+            "isPopular": true
         }
     ]
 }
