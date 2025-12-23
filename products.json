@@ -97,6 +97,19 @@
             "link": "https://amzn.to/4pMHQkX",
             "coupon": "",
             "isPopular": true
+        },
+         {
+            "id": "prod_007",
+            "cat": "eletrodomesticos",
+            "title": "Philips, Removedor de borbotos",
+            "description": "Reviva roupas antigas",
+            "price": "9,04€",
+            "oldPrice": "12,20€",
+            "discount": "-26% OFF",
+            "img": "https://m.media-amazon.com/images/I/61REpxcoIfL._AC_SL1500_.jpg",
+            "link": "https://amzn.to/4qhx7yO",
+            "coupon": "",
+            "isPopular": true
         }
     ]
 }
