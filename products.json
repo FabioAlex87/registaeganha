@@ -123,6 +123,19 @@
             "link": "https://amzn.to/49cOzxF",
             "coupon": "",
             "isPopular": true
+        },
+        {
+            "id": "prod_009",
+            "cat": "computadores",
+            "title": "Computador portátil HP Intel N100 8GB RAM + 256GB SSD",
+            "description": "Computador portátil FHD de 15,6' (Intel N100, 8 GB RAM, 256 GB SSD, Intel UHD, Windows 11), prateado, teclado QWERTY espanhol",
+            "price": "406,60€",
+            "oldPrice": "449,00€",
+            "discount": "-9% OFF",
+            "img": "https://m.media-amazon.com/images/I/71O5DisvHuL._AC_SL1500_.jpg",
+            "link": "https://amzn.to/4psb0VP",
+            "coupon": "",
+            "isPopular": true
         }
     ]
 }
