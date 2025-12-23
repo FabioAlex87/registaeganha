@@ -111,5 +111,18 @@
             "coupon": "",
             "isPopular": true
         }
+        {
+            "id": "prod_008",
+            "cat": "eletronica",
+            "title": "XIAOMI POCO M7 Smartphone de 8 + 256 GB",
+            "description": "câmara dupla de 50 MP com AI, ecrã imersivo FHD+ de 6,9", Snapdragon 685, carregamento rápido de 33 W",
+            "price": "152,47€",
+            "oldPrice": "193,04€",
+            "discount": "-21% OFF",
+            "img": "https://m.media-amazon.com/images/I/61yYqAKJ0GL._AC_SL1000_.jpg",
+            "link": "https://amzn.to/49cOzxF",
+            "coupon": "",
+            "isPopular": true
+        },
     ]
 }
